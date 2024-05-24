@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('commandes_plat', function (Blueprint $table) {
-            $table->foreignId('Id_Commande')->constrained('commandes');
-            $table->foreignId('Id_Plat')->constrained('plats');
+            $table->unsignedBigInteger('Id_Commande');
+            $table->unsignedBigInteger('Id_Plat');
+            $table->foreign('Id_Commande')->references('Id_Commande')->on('commandes')->onDelete('cascade');
+            $table->foreign('Id_Plat')->references('Id_Plat')->on('plats')->onDelete('cascade');
             $table->primary(['Id_Commande', 'Id_Plat']);
         });
     }

@@ -13,8 +13,10 @@ return new class extends Migration
     {
         Schema::create('favoris', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('Client_Id')->constrained('clients');
-            $table->foreignId('Plat_Id')->constrained('plats');
+            $table->unsignedBigInteger('Id_Plat');
+            $table->unsignedBigInteger('Id_Client');
+            $table->foreign('Id_Plat')->references('Id_Plat')->on('plats')->onDelete('cascade');
+            $table->foreign('Id_Client')->references('Id_Client')->on('clients')->onDelete('cascade');
             $table->timestamps();
         });
     }

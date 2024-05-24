@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -104,11 +106,11 @@ class DatabaseSeeder extends Seeder
         DB::table('tables')->insert([
             [
                 'Numero_de_table' => 1,
-                'Capacité' => 4
+                'Capacite' => 4
             ],
             [
                 'Numero_de_table' => 2,
-                'Capacité' => 2
+                'Capacite' => 2
             ],
         ]);
 
@@ -117,12 +119,12 @@ class DatabaseSeeder extends Seeder
             [
                 'Date_heure' => now(),
                 'Mode_paiement' => 'Carte de crédit',
-                'Client_Id' => 1
+                'Id_Client' => 1
             ],
             [
                 'Date_heure' => now(),
                 'Mode_paiement' => 'PayPal',
-                'Client_Id' => 2
+                'Id_Client' => 2
             ],
         ]);
 
@@ -131,18 +133,18 @@ class DatabaseSeeder extends Seeder
             [
                 'Date_heure' => now(),
                 'Mode_paiement' => 'Carte de crédit',
-                'Client_Id' => 1,
-                'Table_Id' => 1,
-                'Horaire_Id' => 1,
+                'Id_Client' => 1,
+                'Id_Table' => 1,
+                'Id_Horaire' => 1,
                 'Nombre_personnes' => 4,
                 'Statut' => 'Confirmée'
             ],
             [
                 'Date_heure' => now(),
                 'Mode_paiement' => 'PayPal',
-                'Client_Id' => 2,
-                'Table_Id' => 2,
-                'Horaire_Id' => 2,
+                'Id_Client' => 2,
+                'Id_Table' => 2,
+                'Id_Horaire' => 2,
                 'Nombre_personnes' => 2,
                 'Statut' => 'Confirmée'
             ],
@@ -164,12 +166,12 @@ class DatabaseSeeder extends Seeder
 
         DB::table('favoris')->insert([
             [
-                'Client_Id' => 1,
-                'Plat_Id' => 1
+                'Id_Client' => 1,
+                'Id_Plat' => 1
             ],
             [
-                'Client_Id' => 2,
-                'Plat_Id' => 2
+                'Id_Client' => 2,
+                'Id_Plat' => 2
             ],
         ]);
 

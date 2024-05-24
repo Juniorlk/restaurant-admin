@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('commandes', function (Blueprint $table) {
             $table->id('Id_Commande');
+            $table->unsignedBigInteger('Id_Client');
             $table->timestamp('Date_heure')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('Mode_paiement');
-            $table->foreignId('Client_Id')->constrained('clients');
+            $table->foreign('Id_Client')->references('Id_Client')->on('clients')->onDelete('cascade');
             $table->timestamps();
         });
     }

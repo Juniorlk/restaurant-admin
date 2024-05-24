@@ -13,16 +13,18 @@ return new class extends Migration
     {
         Schema::create('plats', function (Blueprint $table) {
             $table->id('Id_Plat');
+            $table->unsignedBigInteger('Id_Categorie');
             $table->string('Nom');
             $table->text('Description')->nullable();
             $table->decimal('Prix', 10, 2);
             $table->string('Photos')->nullable();
             $table->text('Allergenes')->nullable();
             $table->string('Type_plat');
-            $table->foreignId('Id_Categorie')->constrained('categories');
+            $table->foreign('Id_Categorie')->references('Id_Categorie')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
