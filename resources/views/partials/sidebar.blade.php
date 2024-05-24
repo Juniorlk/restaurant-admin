@@ -63,6 +63,27 @@
                     </ul>
                 </li>
 
+                <!-- Gestion des Tables et Horaires -->
+                <li>
+                    <a class="sidebar-sub-toggle">
+                        <i class="ti-layout"></i> Gestion des Tables
+                        <span class="sidebar-collapse-icon ti-angle-down"></span>
+                    </a>
+                    <ul>
+                        <li><a href="tables-list.html">Liste des Tables</a></li>
+                        <li><a href="tables-add.html">Ajouter une Table</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="sidebar-sub-toggle">
+                        <i class="ti-time"></i> Horaires d'Ouverture
+                        <span class="sidebar-collapse-icon ti-angle-down"></span>
+                    </a>
+                    <ul>
+                        <li><a href="opening-hours.html">Horaires</a></li>
+                    </ul>
+                </li>
+
                 <!-- Rapports -->
                 <li>
                     <a class="sidebar-sub-toggle">
@@ -100,24 +121,15 @@
                     </ul>
                 </li>
 
-                <!-- Gestion des Tables et Horaires -->
+                <!-- Paramètres -->
                 <li>
                     <a class="sidebar-sub-toggle">
-                        <i class="ti-layout"></i> Gestion des Tables
+                        <i class="ti-settings"></i> Paramètres
                         <span class="sidebar-collapse-icon ti-angle-down"></span>
                     </a>
                     <ul>
-                        <li><a href="tables-list.html">Liste des Tables</a></li>
-                        <li><a href="tables-add.html">Ajouter une Table</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="sidebar-sub-toggle">
-                        <i class="ti-time"></i> Horaires d'Ouverture
-                        <span class="sidebar-collapse-icon ti-angle-down"></span>
-                    </a>
-                    <ul>
-                        <li><a href="opening-hours.html">Horaires</a></li>
+                        <li><a href="settings-general.html">Généraux</a></li>
+                        <li><a href="settings-profile.html">Profil</a></li>
                     </ul>
                 </li>
 
