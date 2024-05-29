@@ -5,15 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categorie extends Model
+class Commande extends Model
 {
     use HasFactory;
 
-    protected $primaryKey = 'Id_Categorie';
-    protected $fillable = ['Nom', 'Description'];
+    protected $table = 'commandes';
+    protected $fillable = ['numero', 'Client_Id', 'montant', 'etat'];
 
-    public function plats()
+    public function client()
     {
-        return $this->hasMany(Plat::class, 'Id_Categorie');
+        return $this->belongsTo(Client::class, 'Client_Id');
     }
 }
