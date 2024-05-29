@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('Id_Categorie');
             $table->string('Nom');
             $table->text('Description')->nullable();
-            $table->decimal('Prix', 10, 2);
+            $table->integer('Prix');
             $table->string('Photos')->nullable();
             $table->text('Allergenes')->nullable();
             $table->string('Type_plat');
