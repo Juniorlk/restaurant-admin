@@ -45,7 +45,7 @@
                         <span class="sidebar-collapse-icon ti-angle-down"></span>
                     </a>
                     <ul>
-                        <li><a href="menu-list.html">Liste des Plats</a></li>
+                        <li><a href="{{ route('liste_plat') }}">Liste des Plats</a></li>
                         <li><a href="menu-add.html">Ajouter un Plat</a></li>
                         <li><a href="menu-categories.html">Catégories</a></li>
                     </ul>
