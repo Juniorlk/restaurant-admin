@@ -10,7 +10,7 @@ class Commande extends Model
     use HasFactory;
 
     protected $table = 'commandes';
-    protected $fillable = ['numero', 'Client_Id', 'montant', 'etat'];
+    protected $fillable = ['numero', 'Client_Id', 'montant', 'etat'] ;
 
     public function client()
     {
