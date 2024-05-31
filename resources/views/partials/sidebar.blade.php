@@ -46,7 +46,7 @@
                     </a>
                     <ul>
                         <li><a href="{{ route('liste_plat') }}">Liste des Plats</a></li>
-                        <li><a href="menu-add.html">Ajouter un Plat</a></li>
+                        <li><a href="{{ route('ajout_plat') }}">Ajouter un Plat</a></li>
                         <li><a href="menu-categories.html">Catégories</a></li>
                     </ul>
                 </li>
