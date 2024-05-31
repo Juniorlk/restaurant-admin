@@ -17,18 +17,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-
-
+    Route::post('/ajouter_plat', [PlatController::class, 'ajouter_plat'])->name('ajouter_plat');
     //commandes
     Route::get('commande', [CommandeController::class, 'index'])->name('commande.index');
-
 });
 
 Route::get('/plat', [PlatController::class, 'liste_plat'])->name('liste_plat');
-//Route::post('/ajouter_plat', [PlatController::class, 'ajouter_plat'])->name('ajouter_plat');
-Route::post('/ajouter_plat', [PlatController::class, 'store'])->name('ajouter_plat');
-Route::get('/update_plat/{id}', [PlatController::class, 'update_plat'])->name('update_plat');
+Route::get('/ajouter-plat', [PlatController::class, 'ajout_plat'])->name('ajout_plat');
+Route::get('/update_plat/{id}', [PlatController::class, 'findupdated_plat'])->name('findupdated_plat');
+Route::get('/delete_plat/{id}', [PlatController::class, 'delete_plat'])->name('delete_plat');
 
 
 require __DIR__.'/auth.php';
