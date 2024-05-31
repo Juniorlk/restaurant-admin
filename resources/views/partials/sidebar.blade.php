@@ -58,7 +58,7 @@
                         <span class="sidebar-collapse-icon ti-angle-down"></span>
                     </a>
                     <ul>
-                        <li><a href="liste.blade.php">Liste des Clients</a></li>
+                        <li><a href="/client">Liste des Clients</a></li>
                     </ul>
                 </li>
 

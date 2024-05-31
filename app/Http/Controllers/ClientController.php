@@ -10,46 +10,45 @@ class ClientController extends Controller
 {
     public function liste_Client()
     {
-        $clients = Client::all();
-        return view('client.liste', compact('clients'));
+       $clients = Client::all();
+        return view('admin.clients.liste', compact('clients'));
     }
 
     public function ajouter_client()
     {
-        return view('client.ajouter');
+        return view('admin.clients.ajout');
     }
 
     public function ajouter_client_traitement(Request $request)
-    {
-        $request->validate([
-            'Id_Client'=> 'required',
-            'Nom' => 'required',
-            'Prenom'=> 'required',
-            'AdresseMail'=> 'required',
-            'MotDePasse'=> 'required',
-            'Telephone'=> 'required',
-        ]);
+{
+    $request->validate([
+        'Nom' => 'required|string|max:255',
+        'Prenom' => 'required|string|max:255',
+        'AdresseMail' => 'required|email',
+        'MotDePasse' => 'required|string|min:8|max:255',
+        'Telephone' => 'required|string|max:20',
+    ]);
 
-        $client = new Client();
-        $client->client_id = $request->client_id;
-        $client->Nom = $request->Nom;
-        $client->Prenom = $request->Prenom;
-        $client->AdresseMail = $request->AdresseMail;
-        $client->MotDePasse = $request->MotDePasse;
-        $client->Telephone = $request->Telephone;
-        $client->save();
+    $client = new Client();
+    $client->Nom = $request->Nom;
+    $client->Prenom = $request->Prenom;
+    $client->AdresseMail = $request->AdresseMail;
+    $client->MotDePasse = bcrypt($request->MotDePasse); // Hash the password before saving
+    $client->Telephone = $request->Telephone;
+    $client->save();
 
-        return redirect('/client')->with('status','Le client a bien ete ajoute avec succes.');
-    }
+    return redirect('/ajout')->with('status', 'Le client a bien été ajouté avec succès.');
+}
+
    
     public function update_client($client_id){
-        return view('client.update');
+        $clients = Client::find($client_id);
+        return view('admin.clients.update', compact('clients'));
     }
 
     public function update_client_traitement(Request $request){
 
         $request->validate([
-            'Id_Client'=> 'required',
             'Nom' => 'required',
             'Prenom'=> 'required',
             'AdresseMail'=> 'required',
