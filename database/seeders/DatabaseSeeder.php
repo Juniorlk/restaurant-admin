@@ -119,11 +119,13 @@ class DatabaseSeeder extends Seeder
             [
                 'Date_heure' => now(),
                 'Mode_paiement' => 'Carte de crédit',
+                'Prix' => 25000,
                 'Id_Client' => 1
             ],
             [
                 'Date_heure' => now(),
                 'Mode_paiement' => 'PayPal',
+                'Prix' => 20000,
                 'Id_Client' => 2
             ],
         ]);
