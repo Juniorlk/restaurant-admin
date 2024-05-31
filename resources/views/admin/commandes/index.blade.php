@@ -61,8 +61,8 @@
                                                     <td>
                                                         @if ($commande->Statut == 0)
                                                             <span class="label label-warning">En cours</span>
-                                                        @else
-                                                        <span class="label label-success">En cours</span>
+                                                        @elseif ($commande->Statut == 1)
+                                                        <span class="label label-success">Livré</span>
                                                         @endif
                                                     </td>
                                                 </tr>
