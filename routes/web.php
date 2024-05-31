@@ -23,12 +23,14 @@ Route::middleware('auth')->group(function () {
     //commandes
     Route::get('commande', [CommandeController::class, 'index'])->name('commande.index');
 
-});
 
-Route::get('/plat', [PlatController::class, 'liste_plat'])->name('liste_plat');
-//Route::post('/ajouter_plat', [PlatController::class, 'ajouter_plat'])->name('ajouter_plat');
-Route::post('/ajouter_plat', [PlatController::class, 'store'])->name('ajouter_plat');
-Route::get('/update_plat/{id}', [PlatController::class, 'update_plat'])->name('update_plat');
+    Route::get('/plat', [PlatController::class, 'liste_plat'])->name('liste_plat');
+    //Route::post('/ajouter_plat', [PlatController::class, 'ajouter_plat'])->name('ajouter_plat');
+    Route::post('/ajouter_plat', [PlatController::class, 'store'])->name('ajouter_plat');
+    Route::get('/update_plat/{id}', [PlatController::class, 'update_plat'])->name('update_plat');
+
+
+});
 
 
 require __DIR__.'/auth.php';
