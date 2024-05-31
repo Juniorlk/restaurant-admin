@@ -40,11 +40,10 @@ class PlatController extends Controller
 
         if ($request->hasFile('photos')) {
             $image = $request->file('photos');
-            $imageName = time().'.'.$image->extension();
-            $image->move(public_path('photos'), $imageName);
+            $path = $image->store('images','public');
 
             // Enregistrer le chemin de l'image dans la base de données
-            $plat->photos = 'photos/' . $imageName;
+            $plat->photos =$path;
         }
         $plat->allergenes = $request->allergenes;
         $plat->type_plat = $request->type_plat;
@@ -64,7 +63,7 @@ class PlatController extends Controller
     public function findupdated_plat ($id)
     {
         $plats = Plat::find($id);
-        return view('admin/plat/update_plat', ['plat' => $plats]);
+        return view('admin/plat/update_plat', ['plats' => $plats]);
         
     }
 }

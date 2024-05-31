@@ -54,15 +54,15 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach($plats as $plats)
+                                                @foreach($plats as $plat)
                                                 <tr>
-                                                    <td>{{$plats->Id_Plat}}</td>
-                                                    <td>{{$plats->Nom}}</td>
-                                                    <td>{{$plats->Photos}}</td>
-                                                    <td class="color-primary">{{$plats->Prix}}</td> 
-                                                    <td>{{$plats->Allergenes}}</td>
-                                                    <td>{{$plats->Type_plat}}</td>
-                                                    <td>{{$plats->Description}}</td>
+                                                    <td>{{$plat->Id_Plat}}</td>
+                                                    <td>{{$plat->Nom}}</td>
+                                                    <td>{{asset("images/$plat->Photos")}}</td>
+                                                    <td class="color-primary">{{$plat->Prix}}</td> 
+                                                    <td>{{$plat->Allergenes}}</td>
+                                                    <td>{{$plat->Type_plat}}</td>
+                                                    <td>{{$plat->Description}}</td>
                                                     <td>
                                                         <form action="" method="post" enctype="multipart/form-data">
                                                             {{ csrf_field() }}
@@ -115,8 +115,8 @@
                                                                 </div>
                                                             </div>
                                                         </form>
-                                                    <a href="/update_plat/{{$plats->Id_Plat}}" class="btn btn-warning btn-rounded m-b-10 m-l-5">Update</a>
-                                                    <a href="/delete_plat/{{$plats->Id_Plat}}" class="btn btn-danger btn-rounded m-b-10 m-l-5">Delete</a>
+                                                    <a href="/update_plat/{{$plat->Id_Plat}}" class="btn btn-warning btn-rounded m-b-10 m-l-5">Update</a>
+                                                    <a href="/delete_plat/{{$plat->Id_Plat}}" class="btn btn-danger btn-rounded m-b-10 m-l-5">Delete</a>
                                                     </td>
                                                 </tr>
                                                 @endforeach
