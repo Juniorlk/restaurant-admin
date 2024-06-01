@@ -34,22 +34,22 @@
                     <div class="col-lg-4 p-l-0 title-margin-left">
                         <div class="page-header">
                             <a class="btn btn-warning btn-rounded m-t-7 m-b-10 m-l-5" href="{{ route('liste_plat') }}">Liste des Plats</a>
-                            
+
                         </div>
                     </div>
-                    
+
                 </div>
                 @if (session('status'))
                     <div class="alert alert-success">
                         {{ session('status') }}
                     </div>
                 @endif
-               
+
                  <!-- Formulaire d'ajout des plats de la bd -->
-                 
-                 <div class="container">
+
+                 <div class="main-content">
                     <div class="card custom-card">
-                  
+
                         <div class="card-body">
                             <form action="{{ route('ajouter_plat')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                                 @csrf
@@ -62,7 +62,7 @@
                                 <div class="form-group row">
                                     <label class="col-lg-2 col-form-label" for="photos">Ajouter une image</label>
                                     <div class="col-lg-8">
-                                        <input type="file" class="form-control" id="photos" name="photos">
+                                        <input type="file" class="form-control" id="photos" name="photos[]" multiple required>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -101,7 +101,7 @@
                                             <option selected>Choose...</option>
                                             <option value="1">1</option>
                                             <option value="2">2</option>
-                                            
+
                                         </select>
                                     </div>
                                 </div>
@@ -115,11 +115,11 @@
                         </div>
                     </div>
                 </div>
-                 
+
 
             </div>
         </div>
     </div>
 
-   
+
 @endsection
