@@ -4,13 +4,10 @@
             <ul>
                 <li class="label">Main</li>
                 <li class="active">
-                    <a class="sidebar-sub-toggle">
+                    <a class="sidebar-sub-toggle" href="{{ Route("dashboard") }}">
                         <i class="ti-home"></i> Dashboard
-                        <span class="sidebar-collapse-icon ti-angle-down"></span>
+                        <span class="sidebar-collapse-icon"></span>
                     </a>
-                    <ul>
-                        <li><a href="index.html">Dashboard</a></li>
-                    </ul>
                 </li>
 
                 <li class="label">Restaurant Management</li>
@@ -21,8 +18,8 @@
                         <span class="sidebar-collapse-icon ti-angle-down"></span>
                     </a>
                     <ul>
-                        <li><a href="orders-list.html">Liste des Commandes</a></li>
-                        <li><a href="orders-details.html">Détails des Commandes</a></li>
+                        <li><a href="{{ route('commande.index') }}">Liste des Commandes</a></li>
+                        <li><a href="orders-details.html">Infos sur les Commandes</a></li>
                     </ul>
                 </li>
 
@@ -45,8 +42,8 @@
                         <span class="sidebar-collapse-icon ti-angle-down"></span>
                     </a>
                     <ul>
-                        <li><a href="menu-list.html">Liste des Plats</a></li>
-                        <li><a href="menu-add.html">Ajouter un Plat</a></li>
+                        <li><a href="{{ route('liste_plat') }}">Liste des Plats</a></li>
+                        <li><a href="{{ route('ajout_plat') }}">Ajouter un Plat</a></li>
                         <li><a href="menu-categories.html">Catégories</a></li>
                     </ul>
                 </li>

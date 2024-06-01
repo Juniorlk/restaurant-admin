@@ -17,6 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('Id_Client');
             $table->timestamp('Date_heure')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->string('Mode_paiement');
+            $table->integer('Prix');
+            $table->boolean('Statut')->default(0);
             $table->foreign('Id_Client')->references('Id_Client')->on('clients')->onDelete('cascade');
             $table->timestamps();
         });
