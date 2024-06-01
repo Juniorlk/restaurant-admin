@@ -11,6 +11,14 @@ class Commande extends Model
     use HasFactory;
     protected $primaryKey = 'Id_Commande';
 
+
+//     protected $table = 'commandes';
+//     protected $fillable = ['numero', 'Client_Id', 'montant', 'etat'] ;
+
+//     public function client()
+//     {
+//         return $this->belongsTo(Client::class, 'Client_Id');
+
     protected $fillable = [
         'Id_Client',
         'Date_heure',
@@ -20,6 +28,7 @@ class Commande extends Model
     public function client()
     {
         return $this->belongsTo(Client::class, 'Id_Client');
+
     }
 
 }

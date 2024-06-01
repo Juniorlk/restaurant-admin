@@ -3,7 +3,10 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PlatController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\Admin\CommandeController;
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -21,6 +24,14 @@ Route::middleware('auth')->group(function () {
     //commandes
     Route::get('commande', [CommandeController::class, 'index'])->name('commande.index');
 });
+
+
+Route::get('/client', [ClientController::class,'liste_Client']);
+Route::get('/ajout', [ClientController::class,'ajouter_client']);
+Route::post('/ajouter/traitement', [ClientController::class,'ajouter_client_traitement']);
+Route::get('/update-client/{id}', [ClientController::class,'update_client']);
+Route::get('/update/traitement', [ClientController::class,'update_client_traitement']);
+Route::get('/delete-client/{id}', [ClientController::class,'delete_client']);
 
 Route::get('/plat', [PlatController::class, 'liste_plat'])->name('liste_plat');
 Route::get('/ajouter-plat', [PlatController::class, 'ajout_plat'])->name('ajout_plat');
