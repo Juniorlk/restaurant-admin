@@ -2,13 +2,14 @@
 @section('content')
 
     <div class="content-wrap">
+        <br><br>
         <div class="main">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-8 p-r-0 title-margin-right">
                         <div class="page-header">
                             <div class="page-title">
-                                <h1>Dashboard</h1>
+                                <h1>Liste des commandes</h1>
                             </div>
                         </div>
                     </div>

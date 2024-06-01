@@ -73,6 +73,276 @@ class DatabaseSeeder extends Seeder
                 'Type_plat' => 'Dessert',
                 'Id_Categorie' => 2
             ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
+            [
+                'Nom' => 'Tiramisu',
+                'Description' => 'Un délicieux dessert italien.',
+                'Prix' => 7.99,
+                'Photos' => 'tiramisu.jpg',
+                'Allergenes' => 'Lait, Œufs',
+                'Type_plat' => 'Dessert',
+                'Id_Categorie' => 2
+            ],
         ]);
 
         DB::table('administrateurs')->insert([

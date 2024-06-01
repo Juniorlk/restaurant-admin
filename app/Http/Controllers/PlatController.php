@@ -11,7 +11,7 @@ class PlatController extends Controller
 {
     public function liste_plat ()
     {
-        $plats = Plat::all();
+        $plats = Plat::paginate(10);
         return view('admin/plat/liste_plat', compact('plats'));
     }
 
@@ -19,32 +19,36 @@ class PlatController extends Controller
     {
         return view('admin/plat/ajouter_plat');
     }
-    
+
 
     public function ajouter_plat(Request $request)
     {
+        // dd($request);
         $request->validate([
             'nom' => 'required|string|max:255',
-            'photos' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'photos.*' => 'required|file|image|max:10240',
             'prix' => 'required|numeric',
             'allergenes' => 'nullable|string',
             'type_plat' => 'required|string',
             'description' => 'nullable|string',
             'id_categorie' => 'required|integer', // Assurez-vous que c'est un entier
         ]);
-            
+
+
+        $imageUrls = [];
+        if ($request->hasFile('photos')) {
+            foreach ($request->file('photos') as $image) {
+                $path = $image->store('images', 'public');
+                $imageUrls[] = $path;
+            }
+        }
+
+
         $plat = new Plat();
         $plat->nom = $request->nom;
         $plat->description = $request->description;
         $plat->prix = $request->prix;
-
-        if ($request->hasFile('photos')) {
-            $image = $request->file('photos');
-            $path = $image->store('images','public');
-
-            // Enregistrer le chemin de l'image dans la base de données
-            $plat->photos =$path;
-        }
+        $plat->photos = json_encode($imageUrls);
         $plat->allergenes = $request->allergenes;
         $plat->type_plat = $request->type_plat;
         $plat->id_categorie = $request->id_categorie; // Assurez-vous d'assigner correctement id_categorie
@@ -64,6 +68,6 @@ class PlatController extends Controller
     {
         $plats = Plat::find($id);
         return view('admin/plat/update_plat', ['plats' => $plats]);
-        
+
     }
 }
