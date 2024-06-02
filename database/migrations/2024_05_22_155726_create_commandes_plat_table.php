@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('commandes_plat', function (Blueprint $table) {
             $table->unsignedBigInteger('Id_Commande');
             $table->unsignedBigInteger('Id_Plat');
+            $table->Integer('quantite');
             $table->foreign('Id_Commande')->references('Id_Commande')->on('commandes')->onDelete('cascade');
             $table->foreign('Id_Plat')->references('Id_Plat')->on('plats')->onDelete('cascade');
             $table->primary(['Id_Commande', 'Id_Plat']);

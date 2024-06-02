@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
-    public function liste_Client()
+    public function index()
     {
-       $clients = Client::all();
-        return view('admin.clients.liste', compact('clients'));
+       $clients = Client::paginate(10);
+        return view('admin.clients.index', compact('clients'));
     }
 
     public function ajouter_client()
@@ -40,7 +40,7 @@ class ClientController extends Controller
     return redirect('/ajout')->with('status', 'Le client a bien été ajouté avec succès.');
 }
 
-   
+
     public function update_client($client_id){
         $clients = Client::find($client_id);
         return view('admin.clients.update', compact('clients'));
@@ -70,7 +70,7 @@ class ClientController extends Controller
 
     }
 
-    public function delete_client($client_id){
+    public function destroy($client_id){
         $client = Client::find($client_id);
         $client->delete();
         return redirect('/client')->with('status','Le client a bien ete supprimer avec succes.');

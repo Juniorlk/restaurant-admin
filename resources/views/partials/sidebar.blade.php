@@ -2,9 +2,12 @@
     <div class="nano">
         <div class="nano-content">
             <ul>
+                @php
+                    $route = request()->route()->getName();
+                @endphp
                 <li class="label">Main</li>
-                <li class="active">
-                    <a class="sidebar-sub-toggle" href="{{ Route("dashboard") }}">
+                <li @class(['active' => str_contains($route, 'dashboard')])>
+                    <a href="{{ Route('dashboard') }}">
                         <i class="ti-home"></i> Dashboard
                         <span class="sidebar-collapse-icon"></span>
                     </a>
@@ -12,31 +15,31 @@
 
                 <li class="label">Restaurant Management</li>
                 <!-- Commandes -->
-                <li>
+                <li @class(['active open' => str_contains($route, 'commande.')])>
                     <a class="sidebar-sub-toggle">
                         <i class="ti-receipt"></i> Commandes
                         <span class="sidebar-collapse-icon ti-angle-down"></span>
                     </a>
                     <ul>
-                        <li><a href="{{ route('commande.index') }}">Liste des Commandes</a></li>
+                        <li @class(['active' => str_contains($route, 'commande.index')])><a href="{{ route('commande.index') }}">Liste des Commandes</a></li>
                         <li><a href="orders-details.html">Infos sur les Commandes</a></li>
                     </ul>
                 </li>
 
                 <!-- Réservations -->
-                <li>
+                <li @class(['active' => str_contains($route, 'reservation')])>
                     <a class="sidebar-sub-toggle">
                         <i class="ti-calendar"></i> Réservations
                         <span class="sidebar-collapse-icon ti-angle-down"></span>
                     </a>
                     <ul>
-                        <li><a href="reservations-list.html">Liste des Réservations</a></li>
+                        <li><a href="{{ route('reservations.index')}}">Liste des Réservations</a></li>
                         <li><a href="reservations-details.html">Détails des Réservations</a></li>
                     </ul>
                 </li>
 
                 <!-- Menu -->
-                <li>
+                <li @class(['active' => str_contains($route, 'plat')])>
                     <a class="sidebar-sub-toggle">
                         <i class="ti-menu"></i> Menu
                         <span class="sidebar-collapse-icon ti-angle-down"></span>
@@ -49,7 +52,7 @@
                 </li>
 
                 <!-- Clients -->
-                <li>
+                <li @class(['active' => str_contains($route, 'client')])>
                     <a class="sidebar-sub-toggle">
                         <i class="ti-user"></i> Clients
                         <span class="sidebar-collapse-icon ti-angle-down"></span>
@@ -81,7 +84,7 @@
                 </li>
 
                 <!-- Rapports -->
-                <li>
+                <li @class(['active' => str_contains($route, 'rapport')])>
                     <a class="sidebar-sub-toggle">
                         <i class="ti-bar-chart"></i> Rapports
                         <span class="sidebar-collapse-icon ti-angle-down"></span>

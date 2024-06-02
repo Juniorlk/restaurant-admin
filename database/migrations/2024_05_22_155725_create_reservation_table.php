@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('reservations', function (Blueprint $table) {
-            $table->id('Id_Reservation');
             $table->timestamp('Date_heure');
             $table->string('Mode_paiement');
             $table->unsignedBigInteger('Id_Client');
@@ -24,6 +23,7 @@ return new class extends Migration
             $table->integer('Nombre_personnes');
             $table->string('Statut');
             $table->timestamps();
+            $table->primary(['Id_Client', 'Id_Table', 'Id_Horaire']);
         });
     }
 
