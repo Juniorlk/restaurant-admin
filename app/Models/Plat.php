@@ -19,9 +19,9 @@ class Plat extends Model
 
     public function commandes()
     {
-        return $this->belongsToMany(Commande::class, 'commandes_plat', 'Id_Plat', 'Id_Commande');
+        return $this->belongsToMany(Commande::class, 'commandes_plat', 'Id_Plat', 'Id_Commande')
+                    ->withPivot('quantite');
     }
-
     public function favoris()
     {
         return $this->hasMany(Favori::class, 'Plat_Id');

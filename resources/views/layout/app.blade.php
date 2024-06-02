@@ -28,6 +28,10 @@
     <link href="{{asset('/assets/css/lib/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('/assets/css/lib/unix.css')}}" rel="stylesheet">
     <link href="{{asset('/assets/css/style.css')}}" rel="stylesheet">
+    <!-- Example for Bootstrap 4 -->
+    {{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> --}}
+
+
 </head>
 
 <body>
@@ -55,6 +59,8 @@
     <script src="{{asset('/assets/js/lib/owl-carousel/owl.carousel.min.js')}}"></script>
     <script src="{{asset('/assets/js/lib/owl-carousel/owl.carousel-init.js')}}"></script>
     <script src="{{asset('/assets/js/scripts.js')}}"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script> --}}
 </body>
 
 </html>

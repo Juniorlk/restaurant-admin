@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Table;
+use App\Models\Client;
+use App\Models\Horaire;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Reservation extends Model
 {
     use HasFactory;
 
     protected $primaryKey = 'Id_Reservation';
-    protected $fillable = ['Date_heure', 'Mode_paiement', 'Client_Id', 'Table_Id', 'Horaire_Id', 'Nombre_personnes', 'Statut'];
+    protected $fillable = ['Date_heure', 'Mode_paiement', 'Nombre_personnes', 'Statut'];
 
     public function client()
     {

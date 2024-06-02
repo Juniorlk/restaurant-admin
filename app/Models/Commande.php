@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Plat;
 use App\Models\Client;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -29,6 +30,11 @@ class Commande extends Model
     {
         return $this->belongsTo(Client::class, 'Id_Client');
 
+    }
+    public function plats()
+    {
+        return $this->belongsToMany(Plat::class, 'commandes_plat', 'Id_Commande','Id_Plat')
+                    ->withPivot('quantite'); // Si vous avez un champ pivot 'quantite'
     }
 
 }
