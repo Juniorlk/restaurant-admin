@@ -62,7 +62,7 @@
                                                                 @php
                                                                     $images = json_decode($plat->Photos);
                                                                     $firstImage = $images
-                                                                        ? asset('storage/' . $images[1])
+                                                                        ? asset('storage/' . $images[0])
                                                                         : asset('assets/images/3.jpg');
                                                                 @endphp
                                                                 <img src="{{ $firstImage }}" class="img-fluid"
