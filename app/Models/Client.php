@@ -10,9 +10,9 @@ class Client extends Model
     use HasFactory;
 
     protected $primaryKey = 'Id_Client';
-    protected $fillable = ['Nom', 'Prenom', 'AdresseMail', 'MotDePasse', 'Telephone'];
+    protected $fillable = ['Nom', 'Prenom', 'AdresseMail', 'MotDePasse', 'Telephone','Statut'];
 
-    public function commandes()
+    public function orders()
     {
         return $this->hasMany(Commande::class, 'Client_Id');
     }

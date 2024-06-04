@@ -77,4 +77,28 @@ class ClientController extends Controller
 
     }
 
+     public function show_client($id)
+        {
+            $client = Client::findOrFail($id);
+            $orders = $client->commandes;
+
+            return view('admin.clients.show', compact('client', 'orders'));
+        }
+
+        public function desactiver(Client $client)
+        {
+            $client->Statut = 'inactif';
+            $client->save();
+
+            return redirect()->route('client.index')->with('success', 'Le compte client a été désactivé.');
+        }
+
+        public function reactiver(Client $client)
+        {
+            $client->Statut = 'actif';
+            $client->save();
+
+            return redirect()->route('client.index')->with('success', 'Le compte client a été réactivé.');
+        }
+
 }

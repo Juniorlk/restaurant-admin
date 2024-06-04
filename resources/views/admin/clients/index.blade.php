@@ -31,7 +31,7 @@
                         <div class="col-lg-12">
                             <div class="card alert">
                                 <div class="card-header">
-
+                                    
                                     <!-- <button type="button" class="btn btn-primary btn-rounded m-b-10 m-l-150">Ajouter un client</button>-->
                                     <br>
                                     <div class="bootstrap-data-table-panel">
@@ -44,6 +44,7 @@
                                                         <th>Prenom</th>
                                                         <th>Email</th>
                                                         <th>Téléphone</th>
+                                                        <th>Statut</th>
                                                         <th>Actions</th>
                                                     </tr>
                                                 </thead>
@@ -51,10 +52,18 @@
                                                     @foreach ($clients as $client)
                                                         <tr>
                                                             <td>{{ $client->Id_Client }}</td>
-                                                            <td>{{ $client->Nom }}</td>
+                                                            <td><a href="{{ route('client.show', $client) }}" >{{ $client->Nom }}</a></td>
                                                             <td>{{ $client->Prenom }}</td>
                                                             <td>{{ $client->AdresseMail }}</td>
                                                             <td>{{ $client->Telephone }}</td>
+                                                            <td>{{ $client->Statut}}</td>
+                                                            <td>
+                                                                @if ($client->Statut == 'actif')
+                                                                <a href="{{ route('clients.desactiver', $client) }}" class="btn btn-danger">Désactiver</a>
+                                                                    @else
+                                                                        <a href="{{ route('clients.reactiver', $client) }}" class="btn btn-success">Réactiver</a>
+                                                                    @endif
+                                                            </td>
                                                             <td>
                                                                 {{-- <a href="/update_client/{{ $client->Id_client }}">
                                                                     <button class="btn btn-warning   btn-addon m-b-10 m-l-5"><i class="ti-pencil"></i>Modifier</button>
