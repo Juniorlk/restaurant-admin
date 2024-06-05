@@ -22,12 +22,36 @@
                         </div>
                     </div>
                 </div>
-                <div id="main-content">
+                <div class="main-content">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card alert">
                                 <div class="card-header">
-                                    <h4>Liste des commandes</h4>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <a href="{{ route('commande.index') }}"><button type="" class="btn btn-warning">Liste Complète</button></a>
+                                        </div>
+                                        <form method="GET" action="{{ route('commande.index') }}" class="position-relative">
+                                            <div class="search-type col-lg-8">
+                                                <input class="form-control input-rounded" type="search" name="search" placeholder="Recherche par Nom" aria-label="Search" value="{{ request('search') }}" />
+                                            </div>
+                                            <div class="col-lg-2"><button type="submit" class="btn btn-primary">Rechercher</button></div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <a href="{{ route('commande.index') }}"><button type="" class="btn btn-warning">Liste Complète</button></a>
+                                        </div>
+                                        <form method="GET" action="{{ route('commande.index') }}" class="position-relative">
+                                            <div class="search-type col-lg-8">
+                                                <input class="form-control input-rounded" type="search" name="search" placeholder="Recherche par Nom" aria-label="Search" value="{{ request('search') }}" />
+                                            </div>
+                                            <div class="col-lg-2"><button type="submit" class="btn btn-primary">Rechercher</button></div>
+                                        </form>
+                                    </div>
                                 </div>
                                 <br>
                                 <div class="bootstrap-data-table-panel">
@@ -41,14 +65,14 @@
                                                     <th>Prix</th>
                                                     <th>Date & heure</th>
                                                     <th>Statut</th>
-                                                    <th></th>
+                                                    <th>Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($commandes as $commande)
                                                     <tr>
                                                         <td>{{ $commande->Id_Commande }}</td>
-                                                        <td>{{ $commande->client->Prenom }} {{ $commande->client->Nom }}</td>
+                                                        <td class="customer">{{ $commande->client->Prenom }} {{ $commande->client->Nom }}</td>
                                                         <td>{{ $commande->Mode_paiement }}</td>
                                                         <td class="color-primary">{{ $commande->Prix }} FCFA</td>
                                                         <td>{{ $commande->Date_heure }}</td>
@@ -58,7 +82,7 @@
                                                             @elseif ($commande->Statut == 1)
                                                                 <span class="label label-success">Livré</span>
                                                             @else
-                                                                <span class="label label-danger">Rejecté</span>
+                                                                <span class="label label-danger">Rejeté</span>
                                                             @endif
                                                         </td>
                                                         <td>
@@ -125,31 +149,22 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="page-nation text-center">
-                                                    {{ $commandes->links('vendor.pagination.default') }}
+                                                    {{ $commandes->appends(request()->query())->links('vendor.pagination.default') }}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- /# card -->
-                        </div>
-                        <!-- /# column -->
-                    </div>
-                    <!-- /# row -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="footer">
-                                <p>This dashboard was generated on <span id="date-time"></span> <a href="#"
-                                        class="page-refresh">Refresh Dashboard</a></p>
-                            </div>
+
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
     <script>
         function submitForm(commandeId, action, nomClient) {
             var form = $('#commandeForm' + commandeId);
