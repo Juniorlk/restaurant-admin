@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Plat;
+use App\Models\Categorie;
 use Illuminate\Support\Facades\Log;
 
 class PlatController extends Controller
@@ -17,7 +18,8 @@ class PlatController extends Controller
 
      public function ajout_plat ()
     {
-        return view('admin/plat/ajouter_plat');
+        $categories = Categorie::all();
+        return view('admin/plat/ajouter_plat', compact('categories'));
     }
 
 
@@ -54,7 +56,7 @@ class PlatController extends Controller
         $plat->id_categorie = $request->id_categorie; // Assurez-vous d'assigner correctement id_categorie
         $plat->save();
 
-        return redirect('/ajouter-plat')->with("status", "Un nouveau plat a été ajouté");
+        return redirect('/ajouter_plat')->with("status", "Un nouveau plat a été ajouté");
     }
 
     public function delete_plat($id)

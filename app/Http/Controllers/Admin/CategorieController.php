@@ -22,7 +22,7 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        return view('admin/plat/ajouter_plat');
+        return view('admin/categorie/ajouter_categorie');
     }
 
     /**
@@ -30,7 +30,17 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nom' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+
+        $categorie = new Categorie();
+        $categorie->nom = $request->nom;
+        $categorie->description = $request->description;
+        $categorie->save();
+
+        return redirect('/categorie')->with("status", "La nouvelle categorie a été ajouté");
     }
 
     /**
@@ -38,7 +48,8 @@ class CategorieController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $categories = Categorie::find($id);
+        return view('admin/categorie/update_categorie', ['categories' => $categories]);
     }
 
     /**
@@ -54,7 +65,16 @@ class CategorieController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nom' => 'required|string|max:255',
+            'description' => 'nullable|string',
+        ]);
+        $categorie = Categorie::findOrFail($id);
+        $categorie->nom = $request->nom;
+        $categorie->description = $request->description;
+        $categorie->save();
+
+        return redirect('/categorie')->with("status", "La nouvelle categorie a été ajouté");
     }
 
     /**
@@ -62,6 +82,8 @@ class CategorieController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $categorie = Categorie::find($id);
+        $categorie->delete();
+        return redirect('/categorie')->with("status", "La categorie a été supprimé");
     }
 }

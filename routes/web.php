@@ -40,7 +40,11 @@ Route::middleware('auth')->group(function () {
 
     //catégorie
     Route::get('/categorie', [CategorieController::class, 'index'])->name('categorie.index');
-    Route::get('/categorie', [CategorieController::class, 'create'])->name('categorie.create');
+    Route::get('/categorie/create', [CategorieController::class, 'create'])->name('categorie.create');
+    Route::post('/categorie', [CategorieController::class, 'store'])->name('categorie.store');
+    Route::get('/categorie_update/{id}', [CategorieController::class, 'show'])->name('categorie.show');
+    Route::put('/updates/{id}', [CategorieController::class, 'update'])->name('categorie.update');
+    Route::get('/categorie_destroy/{id}', [CategorieController::class, 'destroy'])->name('categorie.destroy');
     
 
     //Client

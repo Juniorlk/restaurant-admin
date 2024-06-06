@@ -59,7 +59,12 @@
                                                             <td>{{ $categorie->Id_Categorie }}</td>
                                                             <td>{{ $categorie->Nom }}</td>
                                                             <td>{{ $categorie->Description }}</td>
-                                                            <td></td>
+                                                            <td>
+                                                                <a href="/categorie_update/{{ $categorie->Id_Categorie }}"
+                                                                    class="btn btn-warning btn-rounded m-b-10 m-l-5">Update</a>
+                                                                <a href="/categorie_destroy/{{ $categorie->Id_Categorie }}"
+                                                                    class="btn btn-danger btn-rounded m-b-10 m-l-5">Delete</a>
+                                                            </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>

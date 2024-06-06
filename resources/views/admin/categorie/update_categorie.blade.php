@@ -49,29 +49,31 @@
 
                  <div class="main-content">
                     <div class="card custom-card">
-
+                    
                         <div class="card-body">
-                            <form action="{{ route('categorie.store')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                            <form id="commandeForm{{ $categories->Id_Categorie }}" action="{{ route('categorie.update', $categories->Id_Categorie) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                                 @csrf
-                                <div class="form-group row">
-                                    <label class="col-lg-2 col-form-label" for="nom">Nom de la Categorie</label>
-                                    <div class="col-lg-8">
-                                        <input type="text" id="nom" name="nom" class="form-control" required>
+                                @method('PUT')
+                                @if($categories)
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label" for="nom">Nom de la Categorie</label>
+                                        <div class="col-lg-8">
+                                            <input type="text" id="nom" value="{{$categories->Nom}}" name="nom" class="form-control" required>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-lg-2 col-form-label" for="description">Description</label>
-                                    <div class="col-lg-8">
-                                        <textarea rows="5" cols="30" required class="form-control" id="description" name="description"></textarea>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label" for="description">Description</label>
+                                        <div class="col-lg-8">
+                                            <textarea rows="5" cols="30" required class="form-control" id="description" name="description">{{$categories->Description}}</textarea>
+                                        </div>
                                     </div>
-                                </div>
-                                
-                                <div class="form-group row">
-                                    <div class="col-lg-offset-2 col-lg-8">
-                                        <button type="submit" class="btn btn-primary">Ajouter</button>
-                                        <button class="btn btn-danger" type="reset">Reset</button>
+                                    <div class="form-group row">
+                                        <div class="col-lg-offset-2 col-lg-8">
+                                            <button type="submit" class="btn btn-primary">Modifier</button>
+                                            <button class="btn btn-danger" type="reset">Reset</button>
+                                        </div>
                                     </div>
-                                </div>
+                                @endif
                             </form>
                         </div>
                     </div>

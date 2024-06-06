@@ -99,9 +99,9 @@
                                     <div class="col-lg-8">
                                         <select class="form-select" required id="id_categorie" name="id_categorie">
                                             <option selected>Choose...</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-
+                                            @foreach($categories as $categorie)
+                                                <option value="{{$categorie->Id_Categorie}}">{{$categorie->Nom}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
