@@ -47,6 +47,7 @@
     <script src="{{asset('assets/js/lib/preloader/pace.min.js')}}"></script>
     <!-- sidebar -->
     <script src="{{asset('/assets/js/lib/bootstrap.min.js')}}"></script>
+    <script src="{{asset('/assets/js/phoenix.js')}}"></script>
     <!-- bootstrap -->
     <script src="{{asset('/assets/js/lib/weather/jquery.simpleWeather.min.js')}}"></script>
     <script src="{{asset('/assets/js/lib/weather/weather-init.js')}}"></script>
@@ -59,6 +60,52 @@
     <script src="{{asset('/assets/js/lib/owl-carousel/owl.carousel.min.js')}}"></script>
     <script src="{{asset('/assets/js/lib/owl-carousel/owl.carousel-init.js')}}"></script>
     <script src="{{asset('/assets/js/scripts.js')}}"></script>
+    <script>
+        (function (global, factory) {
+            typeof exports === "object" && typeof module !== "undefined"
+                ? (module.exports = factory())
+                : typeof define === "function" && define.amd
+                ? define(factory)
+                : ((global =
+                    typeof globalThis !== "undefined" ? globalThis : global || self),
+                (global.config = factory()));
+            })(this, function () {
+            "use strict";
+
+            const initialConfig = {
+                phoenixIsNavbarVerticalCollapsed: !1,
+                phoenixTheme: "light",
+                phoenixNavbarTopStyle: "default",
+                phoenixNavbarVerticalStyle: "default",
+                phoenixNavbarPosition: "vertical",
+                phoenixNavbarTopShape: "default",
+                phoenixIsRTL: !1,
+                phoenixSupportChat: !0,
+                },
+                CONFIG = { ...initialConfig },
+                setConfig = (e, a = !0) => {
+                Object.keys(e).forEach((t) => {
+                    (CONFIG[t] = e[t]), a && localStorage.setItem(t, e[t]);
+                });
+                },
+                resetConfig = () => {
+                Object.keys(initialConfig).forEach((e) => {
+                    (CONFIG[e] = initialConfig[e]),
+                    localStorage.setItem(e, initialConfig[e]);
+                });
+                },
+                urlSearchParams = new URLSearchParams(window.location.search),
+                params = Object.fromEntries(urlSearchParams.entries());
+
+            var config = { config: CONFIG, reset: resetConfig, set: setConfig };
+
+            return config;
+        });
+        //# sourceMappingURL=config.js.map
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/2.3.1/list.min.js"></script>
     {{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script> --}}
 </body>
