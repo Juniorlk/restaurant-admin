@@ -12,8 +12,11 @@
                             <div class="card alert">
                                 <div class="card-header">
                                         <h1>{{ $client->Nom }}</h1>
+                                        <h3>PRENOM :</h3>
                                         <p>{{ $client->Prenom }}</p>
+                                        <h3>EMAIL :</h3>
                                         <p>{{ $client->AdresseMail }}</p>
+                                        <h3>TELEPHONE :</h3>
                                         <p>{{ $client->Telephone }}</p>
                                         <br>
                                         <h2>Historique des commandes</h2>
@@ -25,7 +28,6 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Id</th>
-                                                        <th>Noms & Prénoms du client</th>
                                                         <th>Mode de Paiement</th>
                                                         <th>Prix</th>
                                                         <th>Date & heure</th>
@@ -41,7 +43,6 @@
                                                         @foreach ($orders as $order)
                                                         <tr>
                                                             <td>{{ $order->Id_Commande }}</td>
-                                                            <td>{{ $order->client->Prenom }} {{ $commande->client->Nom }}</td>
                                                             <td>{{$order->Mode_paiement }}</td>
                                                             <td class="color-primary">{{ $order->Prix }} FCFA</td>
                                                             <td>{{ $order->Date_heure }}</td>
