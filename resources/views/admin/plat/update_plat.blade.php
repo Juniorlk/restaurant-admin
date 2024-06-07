@@ -51,8 +51,9 @@
                     <div class="card custom-card">
                   
                         <div class="card-body">
-                            <form action="{{ route('ajouter_plat')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                            <form id="commandeForm{{ $plats->Id_Plat }}" action="{{ route('plat.update', $plats->Id_Plat) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                                 @csrf
+                                @method('PUT')
                                 @if($plats)
                                     <div class="form-group row">
                                         <label class="col-lg-2 col-form-label" for="nom">Nom du Plat</label>
@@ -69,20 +70,20 @@
                                     <div class="form-group row">
                                         <label class="col-lg-2 col-form-label" for="prix">Prix</label>
                                         <div class="col-lg-8">
-                                            <input type="number" id="prix" value="{{$plats->Nom}}" name="prix" class="form-control" required>
+                                            <input type="number" id="prix" value="{{$plats->Prix}}" name="prix" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-2 col-form-label" for="allergenes">Allergènes</label>
                                         <div class="col-lg-8">
-                                            <textarea rows="5" cols="30" class="form-control" id="allergenes" name="allergenes"></textarea>
+                                            <textarea rows="5" cols="30"  class="form-control" id="allergenes" name="allergenes">{{$plats->Allergenes}}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-2 col-form-label" for="type_plat">Type de plat</label>
                                         <div class="col-lg-8">
                                             <select class="form-select" id="type_plat" name="type_plat" required>
-                                                <option selected>Choose...</option>
+                                                <option selected>{{$plats->Type_plat}}</option>
                                                 <option value="Entrée">Entrée</option>
                                                 <option value="Resistance">Résistance</option>
                                                 <option value="Dessert">Dessert</option>
@@ -92,14 +93,14 @@
                                     <div class="form-group row">
                                         <label class="col-lg-2 col-form-label" for="description">Description</label>
                                         <div class="col-lg-8">
-                                            <textarea rows="5" cols="30" required class="form-control" id="description" name="description"></textarea>
+                                            <textarea rows="5" cols="30" required class="form-control" id="description" name="description">{{$plats->Description}}</textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label class="col-lg-2 col-form-label" for="id_categorie">Catégorie</label>
                                         <div class="col-lg-8">
                                             <select class="form-select" required id="id_categorie" name="id_categorie">
-                                                <option selected>Choose...</option>
+                                                <option selected>{{$plats->Id_Categorie}}</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
                                                 

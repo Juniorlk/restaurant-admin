@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Plat;
+use App\Models\Categorie;
 use Illuminate\Support\Facades\Log;
 
 class PlatController extends Controller
@@ -17,7 +18,8 @@ class PlatController extends Controller
 
      public function ajout_plat ()
     {
-        return view('admin/plat/ajouter_plat');
+        $categories = Categorie::all();
+        return view('admin/plat/ajouter_plat', compact('categories'));
     }
 
 
@@ -54,7 +56,7 @@ class PlatController extends Controller
         $plat->id_categorie = $request->id_categorie; // Assurez-vous d'assigner correctement id_categorie
         $plat->save();
 
-        return redirect('/ajouter-plat')->with("status", "Un nouveau plat a été ajouté");
+        return redirect('/ajouter_plat')->with("status", "Un nouveau plat a été ajouté");
     }
 
     public function delete_plat($id)
@@ -69,5 +71,71 @@ class PlatController extends Controller
         $plats = Plat::find($id);
         return view('admin/plat/update_plat', ['plats' => $plats]);
 
+    }
+
+   /* public function update(Request $request)
+    {
+        $request->validate([
+            'nom' => 'required|string|max:255',
+            'photos.*' => 'required|file|image|max:10240',
+            'prix' => 'required|numeric',
+            'allergenes' => 'nullable|string',
+            'type_plat' => 'required|string',
+            'description' => 'nullable|string',
+            'id_categorie' => 'required|integer', // Assurez-vous que c'est un entier
+        ]);
+
+        $plat = Plat::find($request->id);
+        $plat->nom = $request->nom;
+        $plat->description = $request->description;
+        $plat->prix = $request->prix;
+        $plat->photos = json_encode($imageUrls);
+        $plat->allergenes = $request->allergenes;
+        $plat->type_plat = $request->type_plat;
+        $plat->id_categorie = $request->id_categorie; // Assurez-vous d'assigner correctement id_categorie
+        $plat->update();
+
+        return redirect('/plat')->with("status", "Le plat a été modifié");
+    }*/
+
+   
+        public function update(Request $request, string $id)
+    {
+        // Validation des données
+        $request->validate([
+            'nom' => 'required|string|max:255',
+            'photos.*' => 'required|file|image|max:10240',
+            'prix' => 'required|numeric',
+            'allergenes' => 'nullable|string',
+            'type_plat' => 'required|string',
+            'description' => 'nullable|string',
+            'id_categorie' => 'required|integer', // Assurez-vous que c'est un entier
+        ]);
+
+        // Trouver le plat par ID
+        $plat = Plat::findOrFail($id);
+
+        // Mettre à jour les champs
+        $imageUrls = [];
+        if ($request->hasFile('photos')) {
+            foreach ($request->file('photos') as $image) {
+                $path = $image->store('images', 'public');
+                $imageUrls[] = $path;
+            }
+        }
+
+
+        $plat->nom = $request->nom;
+        $plat->description = $request->description;
+        $plat->prix = $request->prix;
+        $plat->photos = json_encode($imageUrls);
+        $plat->allergenes = $request->allergenes;
+        $plat->type_plat = $request->type_plat;
+        $plat->id_categorie = $request->id_categorie; // Assurez-vous d'assigner correctement id_categorie
+       
+        // Enregistrer les modifications
+        $plat->save();
+
+        return redirect('/plat')->with("status", "Le plat a été modifié");
     }
 }
