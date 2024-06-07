@@ -20,8 +20,10 @@ class CommandeController extends Controller
 
     public function index(Request $request)
     {
+        // Requête de base pour les commandes
         $query = Commande::query();
 
+        // Filtrer par recherche si le paramètre 'search' est présent
         if ($request->has('search')) {
             $search = $request->input('search');
             $query->whereHas('client', function ($q) use ($search) {
@@ -30,10 +32,23 @@ class CommandeController extends Controller
             });
         }
 
+        // Déterminer le type de commandes à afficher
+        $type = $request->input('type', 'all');
+        if ($type == 'rejected') {
+            $query->where('Statut', 2);
+        } elseif ($type == 'accepted') {
+            $query->where('Statut', 1);
+        } elseif ($type == 'pending') {
+            $query->where('Statut', 0);
+        }
+
+        // Paginer les commandes
         $commandes = $query->paginate(10);
 
-        return view('admin.commandes.index', compact('commandes'));
+        return view('admin.commandes.index', compact('commandes', 'type'));
     }
+
+
 
 
     /**

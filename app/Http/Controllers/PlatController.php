@@ -9,13 +9,27 @@ use Illuminate\Support\Facades\Log;
 
 class PlatController extends Controller
 {
-    public function liste_plat ()
+    public function liste_plat(Request $request)
     {
-        $plats = Plat::paginate(10);
+        // Requête de base pour les plats
+        $query = Plat::query();
+
+        // Filtrer par recherche si le paramètre 'search' est présent
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('Nom', 'like', '%' . $search . '%')
+                ->orWhere('Description', 'like', '%' . $search . '%')
+                ->orWhere('Type_plat', 'like', '%' . $search . '%');
+        }
+
+        // Paginer les plats
+        $plats = $query->paginate(10);
+
         return view('admin/plat/liste_plat', compact('plats'));
     }
 
-     public function ajout_plat ()
+
+    public function ajout_plat ()
     {
         return view('admin/plat/ajouter_plat');
     }

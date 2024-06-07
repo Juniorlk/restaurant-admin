@@ -29,11 +29,14 @@
                                 <div class="card-header">
                                     <div class="row">
                                         <div class="col-lg-2">
-                                            <a href="{{ route('commande.index') }}"><button type="" class="btn btn-warning">Liste Complète</button></a>
+                                            <a href="{{ route('commande.index', ['type' => 'all']) }}">
+                                                <button type="button" class="btn btn-warning">Liste Complète</button>
+                                            </a>
                                         </div>
-                                        <form method="GET" action="{{ route('commande.index') }}" class="position-relative">
+                                        <form method="GET" action="{{ route('commande.index') }}" class="position-relative col-lg-10">
                                             <div class="search-type col-lg-8">
                                                 <input class="form-control input-rounded" type="search" name="search" placeholder="Recherche par Nom" aria-label="Search" value="{{ request('search') }}" />
+                                                {{-- <input type="hidden" name="type" value="{{ $type }}"> --}}
                                             </div>
                                             <div class="col-lg-2"><button type="submit" class="btn btn-primary">Rechercher</button></div>
                                         </form>
@@ -41,16 +44,23 @@
                                 </div>
                                 <br>
                                 <div class="card-header">
+                                    <p><strong>filtrer par :</strong></p>
                                     <div class="row">
                                         <div class="col-lg-2">
-                                            <a href="{{ route('commande.index') }}"><button type="" class="btn btn-warning">Liste Complète</button></a>
+                                            <a href="{{ route('commande.index', ['type' => 'rejected']) }}">
+                                                <button type="button" class="btn btn-danger btn-outline">Commandes Rejetées</button>
+                                            </a>
                                         </div>
-                                        <form method="GET" action="{{ route('commande.index') }}" class="position-relative">
-                                            <div class="search-type col-lg-8">
-                                                <input class="form-control input-rounded" type="search" name="search" placeholder="Recherche par Nom" aria-label="Search" value="{{ request('search') }}" />
-                                            </div>
-                                            <div class="col-lg-2"><button type="submit" class="btn btn-primary">Rechercher</button></div>
-                                        </form>
+                                        <div class="col-lg-2">
+                                            <a href="{{ route('commande.index', ['type' => 'accepted']) }}">
+                                                <button type="button" class="btn btn-success btn-outline">Commandes Acceptées</button>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <a href="{{ route('commande.index', ['type' => 'pending']) }}">
+                                                <button type="button" class="btn btn-warning btn-outline">Commandes en Attente</button>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                                 <br>
@@ -175,7 +185,7 @@
                 type: 'POST',
                 data: form.serialize() + '&action=' + action,
                 success: function(response) {
-                    alert('Commande de Mr/Mme/Mlle '+ nomClient+' est ' + action + ' avec succès.');
+                    alert('Commande de Mr/Mme/Mlle ' + nomClient + ' est ' + action + ' avec succès.');
                     location.reload();  // Reload the page to reflect changes
                 },
                 error: function(xhr) {
