@@ -12,18 +12,16 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /# column -->
                     <div class="col-lg-4 p-l-0 title-margin-left">
                         <div class="page-header">
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
                                     <li><a href="#">Dashboard</a></li>
-                                    <li class="active">liste des clients</li>
+                                    <li class="active">Liste des clients</li>
                                 </ol>
                             </div>
                         </div>
                     </div>
-                    <!-- /# column -->
                 </div>
                 <!-- /# row -->
                 <div data-list='{"valueNames":["customer","email","total-orders","total-spent","city","last-seen","last-order"]}'>
@@ -41,15 +39,15 @@
                                     <br>
                                     <div class="bootstrap-data-table-panel">
                                         <div class="table-responsive">
-                                            <table class="table table-striped table-bordered">
+                                            <table class="table table-striped table-bordered table-hover">
                                                 <thead>
                                                     <tr>
                                                         <th>#</th>
                                                         <th>Nom</th>
-                                                        <th>Prenom</th>
+                                                        <th>Prénom</th>
                                                         <th>Email</th>
                                                         <th>Téléphone</th>
-                                                        <th>Actions</th>
+                                                        <th colspan="3">Actions</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody class="list">
@@ -61,14 +59,65 @@
                                                             <td  class="email">{{ $client->AdresseMail }}</td>
                                                             <td>{{ $client->Telephone }}</td>
                                                             <td>
-                                                                {{-- <a href="/update_client/{{ $client->Id_client }}">
-                                                                    <button class="btn btn-warning   btn-addon m-b-10 m-l-5"><i class="ti-pencil"></i>Modifier</button>
-                                                                </a> --}}
+                                                                <button class="btn btn-warning btn-addon m-b-5 m-r-5" data-toggle="modal" data-target="#modalClient{{ $client->Id_Client }}">
+                                                                    <i class="ti-pencil"></i>Consulter
+                                                                </button>
+                                                            </td>
+                                                            <td>
+                                                                @if ($client->Statut == 'actif')
+                                                                    <a href="{{ route('clients.desactiver', $client) }}">
+                                                                        <button class="btn btn-dark btn-addon m-b-5 m-r-5"><i class="ti-thumb-down"></i>Désactiver</button>
+                                                                    </a>
+                                                                @else
+                                                                    <a href="{{ route('clients.reactiver', $client) }}">
+                                                                        <button class="btn btn-info btn-addon m-b-5 m-r-5"><i class="ti-thumb-up"></i>Réactiver</button>
+                                                                    </a>
+                                                                @endif
+                                                            </td>
+                                                            <td>
                                                                 <a href="/delete-client/{{ $client->Id_Client }}">
-                                                                    <button class="btn btn-danger  btn-addon m-b-10 m-l-5"><i class="ti-trash"></i>Supprimer</button>
+                                                                    <button class="btn btn-danger btn-addon m-b-5 m-l-5"><i class="ti-trash"></i>Supprimer</button>
                                                                 </a>
                                                             </td>
                                                         </tr>
+
+                                                        <!-- Modal for Client Details -->
+                                                        <div class="modal fade" id="modalClient{{ $client->Id_Client }}" tabindex="-1" role="dialog" aria-labelledby="modalLabelClient{{ $client->Id_Client }}" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg" role="document">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="modalLabelClient{{ $client->Id_Client }}">Détails du client #{{ $client->Id_Client }}</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <h4>Informations du Client</h4>
+                                                                        <p><strong>Nom: </strong>{{ $client->Nom }}</p>
+                                                                        <p><strong>Prénom: </strong>{{ $client->Prenom }}</p>
+                                                                        <p><strong>Email: </strong>{{ $client->AdresseMail }}</p>
+                                                                        <p><strong>Téléphone: </strong>{{ $client->Telephone }}</p>
+
+                                                                        <h4>Historique des Commandes</h4>
+                                                                        @php
+                                                                            $commandes = $client->commandes->where('Statut', 1); // Assuming you have a relationship set up in the Client model
+                                                                        @endphp
+                                                                        @if ($commandes->isNotEmpty())
+                                                                            <ul>
+                                                                                @foreach ($commandes as $commande)
+                                                                                    <li>Commande #{{ $commande->Id_Commande }} - {{ $commande->Mode_paiement }} - {{ $commande->Prix }} FCFA - {{ $commande->Date_heure }}</li>
+                                                                                @endforeach
+                                                                            </ul>
+                                                                        @else
+                                                                            <p class="color-danger">Aucune commande passée par ce client.</p>
+                                                                        @endif
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                     @endforeach
                                                 </tbody>
                                             </table>

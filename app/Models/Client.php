@@ -10,20 +10,20 @@ class Client extends Model
     use HasFactory;
 
     protected $primaryKey = 'Id_Client';
-    protected $fillable = ['Nom', 'Prenom', 'AdresseMail', 'MotDePasse', 'Telephone'];
+    protected $fillable = ['Nom', 'Prenom', 'AdresseMail', 'MotDePasse', 'Telephone','Statut'];
 
     public function commandes()
     {
-        return $this->hasMany(Commande::class, 'Client_Id');
+        return $this->hasMany(Commande::class, 'Id_Client');
     }
 
     public function reservations()
     {
-        return $this->hasMany(Reservation::class, 'Client_Id');
+        return $this->hasMany(Reservation::class, 'Id_Client');
     }
 
     public function favoris()
     {
-        return $this->hasMany(Favori::class, 'Client_Id');
+        return $this->hasMany(Favori::class, 'Id_Client');
     }
 }

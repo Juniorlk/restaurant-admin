@@ -24,6 +24,7 @@ class Commande extends Model
         'Id_Client',
         'Date_heure',
         'Mode_paiement',
+        'Statut',
     ];
 
     public function client()

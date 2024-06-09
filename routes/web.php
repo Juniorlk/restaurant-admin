@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/ajouter_plat', [PlatController::class, 'ajout_plat'])->name('ajout_plat');
     Route::get('/update_plat/{id}', [PlatController::class, 'findupdated_plat'])->name('findupdated_plat');
     Route::get('/delete_plat/{id}', [PlatController::class, 'delete_plat'])->name('delete_plat');
+
     Route::post('/ajouter_plat', [PlatController::class, 'ajouter_plat'])->name('ajouter_plat');
     Route::put('/update/{id}', [PlatController::class, 'update'])->name('plat.update');
 
@@ -48,13 +49,16 @@ Route::middleware('auth')->group(function () {
     
 
     //Client
+
     Route::get('client', [ClientController::class,'index'])->name('client.index');
     Route::get('/ajout', [ClientController::class,'ajouter_client']);
     Route::post('/ajouter/traitement', [ClientController::class,'ajouter_client_traitement']);
     Route::get('/update-client/{id}', [ClientController::class,'update_client']);
     Route::get('/update/traitement', [ClientController::class,'update_client_traitement']);
     Route::get('/delete-client/{id}', [ClientController::class,'destroy'])->name('client.destroy');
-
+    Route::get('/client/{id}', [ClientController::class, 'show_client'])->name('client.show');
+    Route::get('/clients/{client}/desactiver', [ClientController::class, 'desactiver'])->name('clients.desactiver');
+    Route::get('/clients/{client}/reactiver', [ClientController::class, 'reactiver'])->name('clients.reactiver');
 
 
     //réservations
