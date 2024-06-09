@@ -3,7 +3,7 @@
     <div class="content-wrap">
         <div class="main">
             <div class="container-fluid">
-             
+
                 <!-- /# row -->
 
                 <div id="main-content">
@@ -11,17 +11,53 @@
                         <div class="col-lg-12">
                             <div class="card alert">
                                 <div class="card-header">
-                                        <h1>{{ $client->Nom }}</h1>
-                                        <h3>PRENOM :</h3>
-                                        <p>{{ $client->Prenom }}</p>
-                                        <h3>EMAIL :</h3>
-                                        <p>{{ $client->AdresseMail }}</p>
-                                        <h3>TELEPHONE :</h3>
-                                        <p>{{ $client->Telephone }}</p>
-                                        <br>
-                                        <h2>Historique des commandes</h2>
-                                    <!-- <button type="button" class="btn btn-primary btn-rounded m-b-10 m-l-150">Ajouter un client</button>-->
+                                    <div class="user-profile m-t-15">
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="user-photo m-b-30">
+                                                    <img class="img-responsive" src="assets/images/user-profile.jpg" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <div class="user-profile-name">Mr.  {{ $client->Nom }}</div>
+                                                <div class="custom-tab user-profile-tab">
+                                                    <ul class="nav nav-tabs" role="tablist">
+                                                        <li role="presentation" class="active"><a href="#1" aria-controls="1" role="tab" data-toggle="tab">About</a></li>
+                                                    </ul>
+                                                    <div class="tab-content">
+                                                        <div role="tabpanel" class="tab-pane active" id="1">
+                                                            <div class="contact-information">
+                                                                <div class="phone-content">
+                                                                    <span class="contact-title"><strong>Nom & prénom:</strong></span>
+                                                                    <span class="phone-number">{{ $client->Prenom }} {{ $client->Nom }}</span>
+                                                                </div>
+                                                                {{-- <div class="gender-content">
+                                                                    <span class="contact-title">Gender:</span>
+                                                                    <span class="gender">Male</span>
+                                                                </div> --}}
+                                                                </div>
+                                                                <div class="email-content">
+                                                                    <span class="contact-title"><strong>Email:</strong> </span>
+                                                                    <span class="contact-email">{{ $client->AdresseMail }}</span>
+                                                                </div>
+                                                                <div class="email-content">
+                                                                    <span class="contact-title"><strong>Numéro de téléphone:</strong> </span>
+                                                                    <span class="contact-email">{{ $client->Telephone }}</span>
+                                                                </div>
+                                                                {{-- <div class="address-content">
+                                                                    <span class="contact-title">Address:</span>
+                                                                    <span class="mail-address">ST-Canada</span>
+                                                                </div> --}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h2>Historique des commandes</h2>
                                     <br>
+
                                     <div class="bootstrap-data-table-panel">
                                         <div class="table-responsive">
                                             <table class="table table-striped table-bordered">
@@ -31,38 +67,29 @@
                                                         <th>Mode de Paiement</th>
                                                         <th>Prix</th>
                                                         <th>Date & heure</th>
-                                                        <th>Statut</th>
-                                                        <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @empty($orders)
+                                                    @if($commandes == null)
                                                           {{-- afficher un message indiquant qu'il n'y a pas de commandes --}}
                                                           <p class="text-danger">Il n'y a pas de commandes pour ce client.</p>
                                                     @else
-                                                        @foreach ($orders as $order)
-                                                        <tr>
-                                                            <td>{{ $order->Id_Commande }}</td>
-                                                            <td>{{$order->Mode_paiement }}</td>
-                                                            <td class="color-primary">{{ $order->Prix }} FCFA</td>
-                                                            <td>{{ $order->Date_heure }}</td>
-                                                            <td>
-                                                                @if ($$order->Statut == 0)
-                                                                    <span class="label label-warning">En cours</span>
-                                                                @elseif ($$order->Statut == 1)
-                                                                    <span class="label label-success">Livré</span>
-                                                                @else
-                                                                    <span class="label label-danger">Rejecté</span>
-                                                                @endif
-                                                            </td>
-                                                            <td>
-                                                                <button class="btn btn-success btn-outline" data-toggle="modal" data-target="#modalCommande{{ $commande->Id_Commande }}">Consulter la Commande</button>
-                                                            </td>
-                                                        </tr>
+                                                        @foreach ($commandes as $commande)
+
+                                                        @if ($commande->Statut != 1)
+
+                                                        @else
+                                                            <tr>
+                                                                <td>{{ $commande->Id_Commande }}</td>
+                                                                <td>{{$commande->Mode_paiement }}</td>
+                                                                <td class="color-primary">{{ $commande->Prix }} FCFA</td>
+                                                                <td>{{ $commande->Date_heure }}</td>
+                                                            </tr>
+                                                        @endif
                                                         @endforeach
-                                                        
-                                                    @endempty
-                                                  
+
+                                                    @endif
+
                                                 </tbody>
                                             </table>
                                         </div>

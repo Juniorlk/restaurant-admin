@@ -12,18 +12,18 @@ class Client extends Model
     protected $primaryKey = 'Id_Client';
     protected $fillable = ['Nom', 'Prenom', 'AdresseMail', 'MotDePasse', 'Telephone','Statut'];
 
-    public function orders()
+    public function commandes()
     {
-        return $this->hasMany(Commande::class, 'Client_Id');
+        return $this->hasMany(Commande::class, 'Id_Client');
     }
 
     public function reservations()
     {
-        return $this->hasMany(Reservation::class, 'Client_Id');
+        return $this->hasMany(Reservation::class, 'Id_Client');
     }
 
     public function favoris()
     {
-        return $this->hasMany(Favori::class, 'Client_Id');
+        return $this->hasMany(Favori::class, 'Id_Client');
     }
 }

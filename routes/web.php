@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/ajouter-plat', [PlatController::class, 'ajout_plat'])->name('ajout_plat');
     Route::get('/update_plat/{id}', [PlatController::class, 'findupdated_plat'])->name('findupdated_plat');
     Route::get('/delete_plat/{id}', [PlatController::class, 'delete_plat'])->name('delete_plat');
-    
+
     //clients
     Route::get('client', [ClientController::class,'index'])->name('client.index');
     Route::get('/ajout', [ClientController::class,'ajouter_client']);
