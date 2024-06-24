@@ -5,7 +5,7 @@ use App\Http\Controllers\PlatController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ReservationController;
 use App\Http\Controllers\Admin\CategorieController;
-use App\Http\Controllers\ClientController;
+use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\CommandeController;
 
 
@@ -21,7 +21,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+
 
 
     //commandes
@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/categorie_update/{id}', [CategorieController::class, 'show'])->name('categorie.show');
     Route::put('/updates/{id}', [CategorieController::class, 'update'])->name('categorie.update');
     Route::get('/categorie_destroy/{id}', [CategorieController::class, 'destroy'])->name('categorie.destroy');
-    
+
 
     //Client
 

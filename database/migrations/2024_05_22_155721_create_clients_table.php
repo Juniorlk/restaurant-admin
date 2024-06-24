@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('Prenom');
             $table->string('AdresseMail')->unique();
             $table->string('MotDePasse');
-            $table->string('Status')->default('actif');
+            // $table->string('Status')->default('actif');
             $table->string('Telephone', 20);
             $table->timestamp('Date_heure')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamps();
