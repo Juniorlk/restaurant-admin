@@ -27,7 +27,7 @@
                     <div class="col-lg-8 p-r-0 title-margin-center">
                         <div class="page-header">
                             <div class="page-title">
-                                <h1>Ajouter un Nouveau plat</h1>
+                                <h1>Modifier le plat</h1>
                             </div>
                         </div>
                     </div>
@@ -100,9 +100,11 @@
                                         <label class="col-lg-2 col-form-label" for="id_categorie">Catégorie</label>
                                         <div class="col-lg-8">
                                             <select class="form-select" required id="id_categorie" name="id_categorie">
-                                                <option selected>{{$plats->Id_Categorie}}</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
+                                                <option selected>Choose...</option>
+                                                @foreach($categories as $categorie)
+                                                    <option value="{{$categorie->Id_Categorie}}">{{$categorie->Nom}}</option>
+                                                @endforeach
+                                               
                                                 
                                             </select>
                                         </div>
