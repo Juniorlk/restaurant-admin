@@ -95,4 +95,6 @@ class ClientController extends Controller
             return redirect()->route('client.index')->with('success', 'Le compte client a été réactivé.');
         }
 
+        
+
 }

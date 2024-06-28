@@ -32,7 +32,7 @@
                             <div class="card">
                                 <div class="stat-widget-eight">
                                     <div class="stat-header">
-                                        <div class="header-title pull-left">Daily Visit</div>
+                                        <div class="header-title pull-left">Nombre d'utilisateur</div>
                                         <div class="card-option drop-menu pull-right"><i class="ti-more-alt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
                                             <ul class="card-option-dropdown dropdown-menu">
                                                 <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
@@ -46,26 +46,23 @@
                                     <div class="stat-content">
                                         <div class="pull-left">
                                             <i class="ti-arrow-up color-success"></i>
-                                            <span class="stat-digit"> 14,2158.35</span>
+                                            <span class="stat-digit">{{$numberOfClients}}</span>
                                         </div>
                                         <div class="pull-right">
-                                            <span class="progress-stats">70%</span>
+                                            <span class="progress-stats"></span>
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-primary w-70" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                                            <span class="sr-only">70% Complete</span>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="col-lg-3">
                             <div class="card">
                                 <div class="stat-widget-eight">
                                     <div class="stat-header">
-                                        <div class="header-title pull-left">Bounce Rate</div>
+                                        <div class="header-title pull-left">Chiffre  d'affaire</div>
                                         <div class="card-option drop-menu pull-right"><i class="ti-more-alt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
                                             <ul class="card-option-dropdown dropdown-menu">
                                                 <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
@@ -79,18 +76,14 @@
                                     <div class="stat-content">
                                         <div class="pull-left">
                                             <i class="ti-arrow-up color-success"></i>
-                                            <span class="stat-digit"> 14,2158.35</span>
+                                            <span class="stat-digit">{{$sommePrix}}</span>
                                         </div>
                                         <div class="pull-right">
-                                            <span class="progress-stats">70%</span>
+                                            <span class="progress-stats"></span>
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-success w-70" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                                            <span class="sr-only">70% Complete</span>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -98,7 +91,7 @@
                             <div class="card">
                                 <div class="stat-widget-eight">
                                     <div class="stat-header">
-                                        <div class="header-title pull-left">Growth Rate</div>
+                                        <div class="header-title pull-left">Nombres de Reservation</div>
                                         <div class="card-option drop-menu pull-right"><i class="ti-more-alt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
                                             <ul class="card-option-dropdown dropdown-menu">
                                                 <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
@@ -111,19 +104,15 @@
                                     <div class="clearfix"></div>
                                     <div class="stat-content">
                                         <div class="pull-left">
-                                            <i class="ti-arrow-down color-danger"></i>
-                                            <span class="stat-digit"> 14,2158.35</span>
+                                            <i class="ti-arrow-up color-success"></i>
+                                            <span class="stat-digit">{{$numberOfReservation}}</span>
                                         </div>
                                         <div class="pull-right">
-                                            <span class="progress-stats">70%</span>
+                                            <span class="progress-stats"></span>
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-warning w-70" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                                            <span class="sr-only">70% Complete</span>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -131,7 +120,7 @@
                             <div class="card">
                                 <div class="stat-widget-eight">
                                     <div class="stat-header">
-                                        <div class="header-title pull-left">Page Views</div>
+                                        <div class="header-title pull-left">Nombre de Commande</div>
                                         <div class="card-option drop-menu pull-right"><i class="ti-more-alt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
                                             <ul class="card-option-dropdown dropdown-menu">
                                                 <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
@@ -144,22 +133,21 @@
                                     <div class="clearfix"></div>
                                     <div class="stat-content">
                                         <div class="pull-left">
-                                            <i class="ti-arrow-down color-danger"></i>
-                                            <span class="stat-digit"> 14,2158.35</span>
+                                            <i class="ti-arrow-up color-success"></i>
+                                            <span class="stat-digit">{{$numberOfCommande}}</span>
                                         </div>
                                         <div class="pull-right">
-                                            <span class="progress-stats">70%</span>
+                                            <span class="progress-stats"></span>
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-success w-70" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                                            <span class="sr-only">70% Complete</span>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
+                       
+                       
+                       
                     </div>
                     <div class="row">
                         <div class="col-lg-12">

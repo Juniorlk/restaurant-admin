@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\TableController;
 use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\HoraireController;
 use App\Http\Controllers\Admin\CommandeController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategorieController;
 use App\Http\Controllers\Admin\ReservationController;
 
@@ -14,9 +15,8 @@ use App\Http\Controllers\Admin\ReservationController;
 //     return view('welcome');
 // });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
