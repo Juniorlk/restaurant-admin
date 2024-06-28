@@ -15,6 +15,6 @@ class Horaire extends Model
 
     public function reservations()
     {
-        return $this->hasMany(Reservation::class, 'Horaire_Id');
+        return $this->hasMany(Reservation::class, 'Id_Horaire');
     }
 }

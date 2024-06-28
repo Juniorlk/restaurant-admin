@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PlatController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\ReservationController;
-use App\Http\Controllers\Admin\CategorieController;
+use App\Http\Controllers\PlatController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\TableController;
 use App\Http\Controllers\Admin\ClientController;
+use App\Http\Controllers\Admin\HoraireController;
 use App\Http\Controllers\Admin\CommandeController;
-
+use App\Http\Controllers\Admin\CategorieController;
+use App\Http\Controllers\Admin\ReservationController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -65,6 +66,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
     Route::get('/reservations/{id}/edit', [ReservationController::class, 'edit'])->name('reservations.edit');
     Route::put('/reservations/{id}', [ReservationController::class, 'update'])->name('reservations.update');
+
+
+
+
+    //tables
+    Route::resource('tables', TableController::class);
+
+    //horaires
+    Route::resource('horaires', HoraireController::class);
 
 });
 
