@@ -8,65 +8,55 @@ use App\Http\Controllers\Controller;
 
 class ReservationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index(Request $request)
     {
-        $reservations = Reservation::paginate(10);
-        return view('admin.reservations.index', compact('reservations'));
+        // Requête de base pour les réservations avec les relations chargées
+        $query = Reservation::with('client');
+
+        // Filtrer par recherche si le paramètre 'search' est présent
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->whereHas('client', function ($q) use ($search) {
+                $q->where('nom', 'like', '%' . $search . '%')
+                  ->orWhere('prenom', 'like', '%' . $search . '%');
+            });
+        }
+
+        // Filtrer par statut si le paramètre 'status' est présent
+        $status = $request->input('status', 'all');
+        if ($status == 'pending') {
+            $query->where('Statut', 'en attente');
+        } elseif ($status == 'validated') {
+            $query->where('Statut', 'validée');
+        } elseif ($status == 'cancelled') {
+            $query->where('Statut', 'annulée');
+        }
+
+        // Paginer les réservations
+        $reservations = $query->paginate(10);
+
+        return view('admin.reservations.index', compact('reservations', 'status'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function edit($id)
     {
-        //
+        $reservation = Reservation::with('client')->findOrFail($id);
+        return view('admin.reservations.edit', compact('reservation'));
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
 
     public function update(Request $request, $id)
     {
         $reservation = Reservation::findOrFail($id);
-        $reservation->Statut = $request->input('action');
+
+        if ($request->input('action') == 'validate') {
+            $reservation->Statut = 'validée';
+        } elseif ($request->input('action') == 'cancel') {
+            $reservation->Statut = 'annulée';
+        }
+
         $reservation->save();
 
-        return redirect()->back()->with('success', 'Reservation mise à jour avec succès.');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->back()->with('success', 'Réservation mise à jour avec succès.');
     }
 }
+

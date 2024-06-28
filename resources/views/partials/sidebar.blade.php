@@ -69,8 +69,8 @@
                         <span class="sidebar-collapse-icon ti-angle-down"></span>
                     </a>
                     <ul>
-                        <li><a href="tables-list.html">Liste des Tables</a></li>
-                        <li><a href="tables-add.html">Ajouter une Table</a></li>
+                        <li><a href="{{ route('tables.index')}}">Liste des Tables</a></li>
+                        <li><a href="{{ route('tables.create') }}">Ajouter une Table</a></li>
                     </ul>
                 </li>
                 <li>
@@ -79,7 +79,7 @@
                         <span class="sidebar-collapse-icon ti-angle-down"></span>
                     </a>
                     <ul>
-                        <li><a href="opening-hours.html">Horaires</a></li>
+                        <li><a href="{{ route('horaires.index')}}">Horaires</a></li>
                     </ul>
                 </li>
 
