@@ -10,7 +10,7 @@ class Plat extends Model
     use HasFactory;
 
     protected $primaryKey = 'Id_Plat';
-    protected $fillable = ['Nom', 'Description', 'Prix', 'Photos', 'Allergenes', 'Type_plat', 'Id_Categorie'];
+    protected $fillable = ['Nom', 'Description', 'Prix', 'Photos', 'Allergenes', 'Type_plat', 'Id_Categorie','isPromo'];
 
     public function categorie()
     {

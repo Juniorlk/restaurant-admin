@@ -10,7 +10,12 @@ class CommandeController extends Controller
 {
     public function index()
     {
-        $commandes = auth()->user()->commandes()->paginate(2);
+        $commandes = Commande::all();
+        return response()->json($commandes);
+    }
+    public function commandesByClient($id)
+    {
+        $commandes = Commande::where('id_client', $id)->get();
         return response()->json($commandes);
     }
 

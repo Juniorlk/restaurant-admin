@@ -41,7 +41,8 @@ class CommandeController extends Controller
         } elseif ($type == 'pending') {
             $query->where('Statut', 0);
         }
-
+        $query->orderBy('Date_heure', 'desc');
+        
         // Paginer les commandes
         $commandes = $query->paginate(10);
 

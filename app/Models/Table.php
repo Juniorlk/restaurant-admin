@@ -15,6 +15,6 @@ class Table extends Model
 
     public function reservations()
     {
-        return $this->hasMany(Reservation::class, 'Table_Id');
+        return $this->hasMany(Reservation::class, 'Id_Table');
     }
 }

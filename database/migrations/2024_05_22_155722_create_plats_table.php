@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('Photos')->nullable();
             $table->text('Allergenes')->nullable();
             $table->string('Type_plat');
+            $table->boolean('isPromo')->default(false);
             $table->foreign('Id_Categorie')->references('Id_Categorie')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });

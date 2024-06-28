@@ -117,10 +117,17 @@
                                                                     <p><strong>Téléphone: </strong>{{ $commande->client->Telephone }}</p>
 
                                                                     <h4>Plats Commandés</h4>
-                                                                    @if ($commande->plats)
+                                                                    @if ($commande->plats->count() > 0)
                                                                         <ul>
                                                                             @foreach ($commande->plats as $plat)
-                                                                                <li>{{ $plat->Nom }} - {{ $plat->pivot->quantite }} x {{ $plat->Prix }} FCFA</li>
+                                                                                <ol>
+                                                                                    <li>{{ $plat->Nom }}</li>
+                                                                                    <li>{{ $plat->Prix }} FCFA</li>
+                                                                                    <li>Quantité: {{ $plat->pivot->quantite }}</li>
+                                                                                    <li>Total: {{ $plat->Prix * $plat->pivot->quantite }} FCFA</li>
+                                                                                </ol>
+                                                                                <hr>
+                                                                                {{-- <li>{{ $plat->Nom }} - {{ $plat->pivot->quantite }} x {{ $plat->Prix }} FCFA</li> --}}
                                                                             @endforeach
                                                                         </ul>
                                                                     @else
@@ -132,12 +139,13 @@
                                                                     <p><strong>Prix Total: </strong>{{ $commande->Prix }} FCFA</p>
                                                                     <p><strong>Date et Heure: </strong>{{ $commande->Date_heure }}</p>
                                                                     <p><strong>Statut: </strong>
+
                                                                         @if ($commande->Statut == 0)
-                                                                            En cours
+                                                                            <span class="label label-warning">En cours</span>
                                                                         @elseif ($commande->Statut == 1)
-                                                                            Livré
+                                                                            <span class="label label-success">Livré</span>
                                                                         @else
-                                                                            Rejeté
+                                                                            <span class="label label-danger">Rejeté</span>
                                                                         @endif
                                                                     </p>
                                                                 </div>

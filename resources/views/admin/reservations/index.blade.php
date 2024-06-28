@@ -22,12 +22,45 @@
                         </div>
                     </div>
                 </div>
-                <div id="main-content">
+                <div class="main-content">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card alert">
                                 <div class="card-header">
-                                    <h4>Liste des réservations</h4>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <a href="{{ route('reservations.index', ['status' => 'all']) }}">
+                                                <button type="button" class="btn btn-warning">Liste Complète</button>
+                                            </a>
+                                        </div>
+                                        <form method="GET" action="{{ route('reservations.index') }}" class="position-relative col-lg-10">
+                                            <div class="search-type col-lg-8">
+                                                <input class="form-control input-rounded" type="search" name="search" placeholder="Recherche par Nom" aria-label="Search" value="{{ request('search') }}" />
+                                            </div>
+                                            <div class="col-lg-2"><button type="submit" class="btn btn-primary">Rechercher</button></div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="card-header">
+                                    <p><strong>filtrer par :</strong></p>
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            <a href="{{ route('reservations.index', ['status' => 'pending']) }}">
+                                                <button type="button" class="btn btn-warning btn-outline">En Attente</button>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <a href="{{ route('reservations.index', ['status' => 'validated']) }}">
+                                                <button type="button" class="btn btn-success btn-outline">Validées</button>
+                                            </a>
+                                        </div>
+                                        <div class="col-lg-2">
+                                            <a href="{{ route('reservations.index', ['status' => 'cancelled']) }}">
+                                                <button type="button" class="btn btn-danger btn-outline">Annulées</button>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                                 <br>
                                 <div class="bootstrap-data-table-panel">
@@ -36,129 +69,57 @@
                                             <thead>
                                                 <tr>
                                                     <th>Id</th>
-                                                    <th>Noms & Prénoms du client</th>
-                                                    <th>Mode de Paiement</th>
-                                                    <th>Date & Heure</th>
-                                                    <th>Table</th>
-                                                    <th>Nombre de personnes</th>
+                                                    <th>Nom du Client</th>
+                                                    <th>Date</th>
+                                                    <th>Heure</th>
                                                     <th>Statut</th>
-                                                    <th></th>
+                                                    <th>Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach ($reservations as $reservation)
                                                     <tr>
                                                         <td>{{ $reservation->Id_Reservation }}</td>
-                                                        <td>{{ $reservation->client->Prenom }} {{ $reservation->client->Nom }}</td>
-                                                        <td>{{ $reservation->Mode_paiement }}</td>
-                                                        <td>{{ $reservation->Date_heure }}</td>
-                                                        <td>{{ $reservation->table->Numero_de_table }}</td>
-                                                        <td>{{ $reservation->Nombre_personnes }}</td>
                                                         <td>
-                                                            @if ($reservation->Statut == 'en_cours')
-                                                                <span class="label label-warning">En cours</span>
-                                                            @elseif ($reservation->Statut == 'confirmé')
-                                                                <span class="label label-success">Confirmé</span>
+                                                            @if ($reservation->client)
+                                                                {{ $reservation->client->Nom }} {{ $reservation->client->Prenom }}
                                                             @else
-                                                                <span class="label label-danger">Annulé</span>
+                                                                <em>Client non trouvé</em>
+                                                            @endif
+                                                        </td>
+                                                        <td>{{ \Carbon\Carbon::parse($reservation->Date_heure)->format('d/m/Y') }}</td>
+                                                        <td>{{ \Carbon\Carbon::parse($reservation->Date_heure)->format('H:i') }}</td>
+                                                        <td>
+                                                            @if ($reservation->Statut == 'en attente')
+                                                                <span class="label label-warning">En attente</span>
+                                                            @elseif ($reservation->Statut == 'validée')
+                                                                <span class="label label-success">Validée</span>
+                                                            @else
+                                                                <span class="label label-danger">Annulée</span>
                                                             @endif
                                                         </td>
                                                         <td>
-                                                            <button class="btn btn-success btn-outline" data-toggle="modal" data-target="#modalReservation{{ $reservation->Id_Reservation }}">Consulter la Réservation</button>
+                                                            <a href="{{ route('reservations.edit', $reservation->Id_Reservation) }}" class="btn btn-success btn-outline">Modifier</a>
                                                         </td>
                                                     </tr>
-                                                    <!-- Modal -->
-                                                    <div class="modal fade" id="modalReservation{{ $reservation->Id_Reservation }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                        <div class="modal-dialog modal-lg" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <h5 class="modal-title" id="exampleModalLabel">Détails de la Réservation #{{ $reservation->Id_Reservation }}</h5>
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                    </button>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <h4>Informations du Client</h4>
-                                                                    <p><strong>Nom: </strong>{{ $reservation->client->Nom }}</p>
-                                                                    <p><strong>Prénom: </strong>{{ $reservation->client->Prenom }}</p>
-                                                                    <p><strong>Email: </strong>{{ $reservation->client->Email }}</p>
-                                                                    <p><strong>Téléphone: </strong>{{ $reservation->client->Telephone }}</p>
-
-                                                                    <h4>Détails de la Réservation</h4>
-                                                                    <p><strong>Mode de Paiement: </strong>{{ $reservation->Mode_paiement }}</p>
-                                                                    <p><strong>Date et Heure: </strong>{{ $reservation->Date_heure }}</p>
-                                                                    <p><strong>Table: </strong>{{ $reservation->table->Numero_de_table }}</p>
-                                                                    <p><strong>Nombre de personnes: </strong>{{ $reservation->Nombre_personnes }}</p>
-                                                                    <p><strong>Statut: </strong>
-                                                                        @if ($reservation->Statut == 'en_cours')
-                                                                            En cours
-                                                                        @elseif ($reservation->Statut == 'confirmé')
-                                                                            Confirmé
-                                                                        @else
-                                                                            Annulé
-                                                                        @endif
-                                                                    </p>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <form id="reservationForm{{ $reservation->Id_Reservation }}" action="{{ route('reservations.update', $reservation->Id_Reservation) }}" method="POST">
-                                                                        @csrf
-                                                                        @method('PUT')
-                                                                        <button type="button" class="btn btn-success" onclick="submitForm('{{ $reservation->Id_Reservation }}', 'confirmé', '{{ $reservation->client->Nom }}')">Confirmer la Réservation</button>
-                                                                        <button type="button" class="btn btn-danger" onclick="submitForm('{{ $reservation->Id_Reservation }}', 'annulé', '{{ $reservation->client->Nom }}')">Annuler la Réservation</button>
-                                                                    </form>
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                 @endforeach
                                             </tbody>
                                         </table>
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="page-nation text-center">
-                                                    {{ $reservations->links('vendor.pagination.default') }}
+                                                    {{ $reservations->appends(request()->query())->links('vendor.pagination.default') }}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- /# card -->
-                        </div>
-                        <!-- /# column -->
-                    </div>
-                    <!-- /# row -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="footer">
-                                <p>This dashboard was generated on <span id="date-time"></span> <a href="#"
-                                        class="page-refresh">Refresh Dashboard</a></p>
-                            </div>
+
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-    <script>
-        function submitForm(reservationId, action, nomClient) {
-            var form = $('#reservationForm' + reservationId);
-            var url = form.attr('action');
-
-            $.ajax({
-                url: url,
-                type: 'POST',
-                data: form.serialize() + '&action=' + action,
-                success: function(response) {
-                    alert('Réservation de Mr/Mme/Mlle '+ nomClient +' est ' + action + ' avec succès.');
-                    location.reload();  // Reload the page to reflect changes
-                },
-                error: function(xhr) {
-                    alert('Une erreur s\'est produite. Veuillez réessayer.');
-                }
-            });
-        }
-    </script>
 @endsection
