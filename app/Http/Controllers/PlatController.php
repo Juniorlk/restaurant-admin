@@ -83,7 +83,8 @@ class PlatController extends Controller
     public function findupdated_plat ($id)
     {
         $plats = Plat::find($id);
-        return view('admin/plat/update_plat', ['plats' => $plats]);
+        $categories= Categorie::all();
+        return view('admin/plat/update_plat', ['plats' => $plats],['categories'=> $categories]);
 
     }
 
