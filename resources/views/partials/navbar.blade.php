@@ -1,6 +1,6 @@
 <div class="header">
     <div class="pull-left">
-        <div class="logo"><a href="index.html"><!-- <img src="assets/images/logo.png" alt="" /> --><span>NOM DU RESTAURANT</span></a></div>
+        <div class="logo"><a href="{{Route('dashboard')}}"> <img src="{{asset('/images/logo3.png')}}" alt="foodapp" width="25"/><span><strong>foodapp</strong></span></a></div>
         <div class="hamburger sidebar-toggle">
             <span class="line"></span>
             <span class="line"></span>

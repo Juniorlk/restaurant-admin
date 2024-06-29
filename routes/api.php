@@ -22,7 +22,7 @@ Route::get('/', function(){
 });
 
 Route::get('commandes', [CommandeController::class, 'index']);
-Route::get('commandes/{id_client}', [CommandeController::class, 'commandesByClient']);
+Route::get('commandes/{id_client}/{status}', [CommandeController::class, 'commandesByClient']);
 Route::post('commandes', [CommandeController::class, 'store']);
 Route::put('commandes/{commande}', [CommandeController::class, 'update']);
 Route::delete('commandes/{commande}', [CommandeController::class, 'destroy']);

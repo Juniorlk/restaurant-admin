@@ -13,9 +13,10 @@ class CommandeController extends Controller
         $commandes = Commande::all();
         return response()->json($commandes);
     }
-    public function commandesByClient($id)
+    public function commandesByClient($id, $status)
     {
-        $commandes = Commande::where('id_client', $id)->get();
+        $commandes = Commande::where('id_client', $id)->where('statut', $status)->get();
+        
         return response()->json($commandes);
     }
 
