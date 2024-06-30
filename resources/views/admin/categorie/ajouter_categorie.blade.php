@@ -65,7 +65,13 @@
                                         <textarea rows="5" cols="30" required class="form-control" id="description" name="description"></textarea>
                                     </div>
                                 </div>
-                                
+                                <div class="form-group row">
+                                    <label class="col-lg-2 col-form-label" for="photo">Photo</label>
+                                    <div class="col-lg-8">
+                                        <input type="file" id="photo" name="photo" class="form-control" required>
+                                    </div>
+                                </div>
+
                                 <div class="form-group row">
                                     <div class="col-lg-offset-2 col-lg-8">
                                         <button type="submit" class="btn btn-primary">Ajouter</button>

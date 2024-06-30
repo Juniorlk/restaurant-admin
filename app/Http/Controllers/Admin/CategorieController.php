@@ -33,14 +33,22 @@ class CategorieController extends Controller
         $request->validate([
             'nom' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $categorie = new Categorie();
         $categorie->nom = $request->nom;
         $categorie->description = $request->description;
+
+        if ($request->hasFile('photo')) {
+            $path = $request->file('photo')->store('images', 'public');
+            $image = $path;
+        }
+
+        $categorie->Image = $image;
         $categorie->save();
 
-        return redirect('/categorie')->with("status", "La nouvelle categorie a été ajouté");
+        return redirect('/categorie')->with("status", "La nouvelle categorie a été ajoutée");
     }
 
     /**
@@ -68,10 +76,19 @@ class CategorieController extends Controller
         $request->validate([
             'nom' => 'required|string|max:255',
             'description' => 'nullable|string',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
         $categorie = Categorie::findOrFail($id);
         $categorie->nom = $request->nom;
         $categorie->description = $request->description;
+
+        if ($request->hasFile('photo')) {
+            $photo = $request->file('photo');
+            $filename = time() . '.' . $photo->getClientOriginalExtension();
+            $photo->move('storage/photos/', $filename);
+            $categorie->photo = $filename;
+        }
+
         $categorie->save();
 
         return redirect('/categorie')->with("status", "La nouvelle categorie a été ajouté");

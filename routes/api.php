@@ -31,6 +31,7 @@ Route::get('plats', [PlatsController::class, 'index']);
 Route::get('promotions', [PlatsController::class, 'promotions']);
 
 Route::get('/photos-{id}',[PlatsController::class,'getImage']);
+Route::get('/categories_photo-{id}', [CategorieController::class, 'getPhoto']);
 
 // Route::middleware('auth:sanctum')->group(function () {
 //     Route::get('commandes/{commande}', [CommandeController::class, 'show']);

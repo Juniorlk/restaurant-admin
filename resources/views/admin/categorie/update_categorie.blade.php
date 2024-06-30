@@ -49,7 +49,7 @@
 
                  <div class="main-content">
                     <div class="card custom-card">
-                    
+
                         <div class="card-body">
                             <form id="commandeForm{{ $categories->Id_Categorie }}" action="{{ route('categorie.update', $categories->Id_Categorie) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                                 @csrf
@@ -59,6 +59,12 @@
                                         <label class="col-lg-2 col-form-label" for="nom">Nom de la Categorie</label>
                                         <div class="col-lg-8">
                                             <input type="text" id="nom" value="{{$categories->Nom}}" name="nom" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-lg-2 col-form-label" for="photo">Photo</label>
+                                        <div class="col-lg-8">
+                                            <input type="file" id="photo" name="photo" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group row">
