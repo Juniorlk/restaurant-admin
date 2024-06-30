@@ -48,6 +48,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Id</th>
+                                                        <th>Photo</th>
                                                         <th>Nom</th>
                                                         <th>Description</th>
                                                         <th>Actions</th>
@@ -55,8 +56,13 @@
                                                 </thead>
                                                 <tbody>
                                                     @foreach ($categories as $categorie)
+                                                        @php
+                                                            $images = $categorie->Image;
+                                                            $firstImage = $images ? asset('storage/' . $images) : asset('assets/images/3.jpg');
+                                                        @endphp
                                                         <tr>
                                                             <td>{{ $categorie->Id_Categorie }}</td>
+                                                            <td><img src="{{ $firstImage }}" class="img-fluid" alt="{{ $categorie->Nom }}" width="100" height="100" /></td>
                                                             <td>{{ $categorie->Nom }}</td>
                                                             <td>{{ $categorie->Description }}</td>
                                                             <td>

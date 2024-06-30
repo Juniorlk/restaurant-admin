@@ -11,7 +11,7 @@ class Categorie extends Model
     use HasFactory;
 
     protected $primaryKey = 'Id_Categorie';
-    protected $fillable = ['Nom', 'Description'];
+    protected $fillable = ['Nom', 'Image','Description'];
 
     public function plats()
     {

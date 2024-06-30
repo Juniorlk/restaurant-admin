@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Models\Commande;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 
 class CommandeController extends Controller
 {
@@ -13,9 +14,10 @@ class CommandeController extends Controller
         $commandes = Commande::all();
         return response()->json($commandes);
     }
-    public function commandesByClient($id)
+    public function commandesByClient($id, $status)
     {
-        $commandes = Commande::where('id_client', $id)->get();
+        $commandes = Commande::where('id_client', $id)->where('statut', $status)->get();
+
         return response()->json($commandes);
     }
 
@@ -27,16 +29,34 @@ class CommandeController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        // $this->authorize('create', Commande::class);
+
+        $validator = Validator::make($request->all(), [
+            'Id_Client' => 'required|exists:clients,Id_Client',
             'Mode_paiement' => 'required|string',
-            'Prix' => 'required|integer',
-            'Statut' => 'integer',
+            'Prix' => 'required|numeric',
+            'plats' => 'required|array',
+            'plats.*.Id_Plat' => 'exists:plats,Id_Plat',
+            'plats.*.quantite' => 'integer|min:1',
         ]);
-        $commande = auth()->user()->commandes()->create($validated);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $commande = Commande::create([
+            'Id_Client' => $request->Id_Client,
+            'Date_heure' => now(),
+            'Mode_paiement' => $request->Mode_paiement,
+            'Prix' => $request->Prix,
+        ]);
+
+        foreach ($request->plats as $plat) {
+            $commande->plats()->attach($plat['Id_Plat'], ['quantite' => $plat['quantite']]);
+        }
 
         return response()->json($commande, 201);
     }
-
     public function update(Request $request, Commande $commande)
     {
         $this->authorize('update', $commande);

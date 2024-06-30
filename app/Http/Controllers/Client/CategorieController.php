@@ -14,5 +14,16 @@ class CategorieController extends Controller
         // dd($categories);
         return response()->json($categories);
     }
+
+    public function getPhoto($id)
+    {
+        $photo = Categorie::where('Id_Categorie', $id)->first();
+
+        if ($photo) {
+            return response()->file(public_path('storage/' . $photo->Image));
+        }
+
+        return response()->json(['error' => 'Photo not found'], 404);
+    }
 }
 
