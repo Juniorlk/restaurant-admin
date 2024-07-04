@@ -72,7 +72,7 @@ class DashboardController extends Controller
         {
             $numberOfClients = Client::count();
             $sommePrix = Commande::sum('Prix');
-            $numberOfCommande = Commande::count();
+            $numberOfCommande = Commande::where('statut', 1)->count();
             $numberOfReservation = Reservation::count();
             return view('dashboard', compact('numberOfClients','sommePrix','numberOfCommande','numberOfReservation'));
         }

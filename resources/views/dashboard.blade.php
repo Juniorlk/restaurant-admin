@@ -62,13 +62,13 @@
                             <div class="card">
                                 <div class="stat-widget-eight">
                                     <div class="stat-header">
-                                        <div class="header-title pull-left">Chiffre  d'affaire</div>
+                                        <div class="header-title pull-left">Chiffre d'affaire</div>
                                         <div class="card-option drop-menu pull-right"><i class="ti-more-alt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
                                             <ul class="card-option-dropdown dropdown-menu">
                                                 <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
                                                 <li><a href="#"><i class="ti-menu-alt"></i> Detail log</a></li>
                                                 <li><a href="#"><i class="ti-pulse"></i> Statistics</a></li>
-                                                <li><a href="#"><i class="ti-power-off"></i> Clear ist</a></li>
+                                                <li><a href="#"><i class="ti-power-off"></i> Clear list</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -76,17 +76,40 @@
                                     <div class="stat-content">
                                         <div class="pull-left">
                                             <i class="ti-arrow-up color-success"></i>
-                                            <span class="stat-digit">{{$sommePrix}}</span>
+                                            <span class="stat-digit" id="sommePrix">{{$sommePrix}}</span>
                                         </div>
                                         <div class="pull-right">
                                             <span class="progress-stats"></span>
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
-                                    
                                 </div>
                             </div>
                         </div>
+                        
+                        <script>
+                            $(document).ready(function() {
+                                function fetchPrixSomme() {
+                                    $.ajax({
+                                        url: '/prix-somme',
+                                        method: 'GET',
+                                        success: function(response) {
+                                            $('#sommePrix').text(response.somme);
+                                        },
+                                        error: function(xhr, status, error) {
+                                            console.error('Error fetching prix somme:', error);
+                                        }
+                                    });
+                                }
+                        
+                                // Actualiser toutes les secondes
+                                setInterval(fetchPrixSomme, 1000);
+                        
+                                // Fetch initial sum
+                                fetchPrixSomme();
+                            });
+                        </script>
+                        
                         <div class="col-lg-3">
                             <div class="card">
                                 <div class="stat-widget-eight">
