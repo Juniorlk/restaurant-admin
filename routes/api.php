@@ -6,6 +6,8 @@ use App\Http\Controllers\Client\PlatsController;
 use App\Http\Controllers\Client\CommandeController;
 use App\Http\Controllers\Client\CategorieController;
 use App\Http\Controllers\Client\ClientAuthController;
+use App\Http\Controllers\Client\ReservationController;
+
 
 
 
@@ -43,3 +45,9 @@ Route::get('/categories_photo-{id}', [CategorieController::class, 'getPhoto']);
 //     Route::get('plats', [PlatController::class, 'index']);
 //     Route::get('plats/promotions', [PlatController::class, 'promotions']);
 // });
+
+Route::post('/admin/slots', [ReservationController::class, 'createSlots']);
+Route::get('/slots/{day}', [ReservationController::class, 'getSlotsByDay']);
+Route::get('/tables/{horaireId}/{persons}', [ReservationController::class, 'getAvailableTables']);
+Route::post('/reservations', [ReservationController::class, 'store']);
+Route::get('/reservations/{clientId}', [ReservationController::class, 'getReservationsByClient']);

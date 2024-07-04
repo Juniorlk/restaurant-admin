@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
 
     //plats
     Route::get('/plat', [PlatController::class, 'liste_plat'])->name('liste_plat');
+    Route::get('/plats', [PlatController::class, 'liste_plat_tableau'])->name('liste_plat_tableau');
     Route::get('/ajouter_plat', [PlatController::class, 'ajout_plat'])->name('ajout_plat');
     Route::get('/update_plat/{id}', [PlatController::class, 'findupdated_plat'])->name('findupdated_plat');
     Route::get('/delete_plat/{id}', [PlatController::class, 'delete_plat'])->name('delete_plat');

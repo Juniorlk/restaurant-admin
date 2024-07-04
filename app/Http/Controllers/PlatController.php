@@ -28,6 +28,24 @@ class PlatController extends Controller
 
         return view('admin/plat/liste_plat', compact('plats'));
     }
+    public function liste_plat_tableau(Request $request)
+    {
+        // Requête de base pour les plats
+        $query = Plat::query();
+
+        // Filtrer par recherche si le paramètre 'search' est présent
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('Nom', 'like', '%' . $search . '%')
+                ->orWhere('Description', 'like', '%' . $search . '%')
+                ->orWhere('Type_plat', 'like', '%' . $search . '%');
+        }
+
+        // Paginer les plats
+        $plats = $query->paginate(10);
+
+        return view('admin/plat/liste_plat_tableau', compact('plats'));
+    }
 
 
     public function ajout_plat ()
@@ -113,7 +131,7 @@ class PlatController extends Controller
         return redirect('/plat')->with("status", "Le plat a été modifié");
     }*/
 
-   
+
         public function update(Request $request, string $id)
     {
         // Validation des données
@@ -147,7 +165,7 @@ class PlatController extends Controller
         $plat->allergenes = $request->allergenes;
         $plat->type_plat = $request->type_plat;
         $plat->id_categorie = $request->id_categorie; // Assurez-vous d'assigner correctement id_categorie
-       
+
         // Enregistrer les modifications
         $plat->save();
 

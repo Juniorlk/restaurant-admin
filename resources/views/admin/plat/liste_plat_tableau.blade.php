@@ -32,9 +32,12 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card alert">
-                            {{-- <div class="card-header">
+                            <div class="card-header">
                                 <a href="{{ Route('ajout_plat') }}">
-                                    <button type="button" class="btn btn-warning btn-block m-b-10"><strong>Ajouter un plat</strong></button>
+                                    <button type="button" class="btn btn-addon m-b-10" style="background-color: #1bac4b"><strong style="color: white"><i><i class="fa fa-plus"></i></i>AJOUTER UN PLAT</strong></button>
+                                </a>
+                                <a href="{{ Route('liste_plat') }}">
+                                    <button type="button" class="btn btn-addon m-b-10 text-right" style="background-color: #1b5fac"><strong style="color: white"><i><i class="fa fa-list"></i></i>GRILLE DES PLATS</strong></button>
                                 </a>
                                 <br>
                                 {{-- <div class="row">
@@ -46,7 +49,7 @@
                                             <button type="submit" class="btn btn-primary">Rechercher</button>
                                         </div>
                                     </form>
-                                </div>
+                                </div> --}}
                             </div>
                             <br>
                             <div class="bootstrap-data-table-panel">
@@ -92,79 +95,6 @@
                                         <div class="col-md-12">
                                             <div class="page-nation text-center">
                                                 {{ $plats->appends(request()->query())->links('vendor.pagination.default') }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> --}}
-                            <div class="card-header">
-                                <a href="{{ Route('ajout_plat') }}">
-                                    <button type="button" class="btn btn-addon m-b-10" style="background-color: #1bac4b"><strong style="color: white"><i><i class="fa fa-plus"></i></i>AJOUTER UN PLAT</strong></button>
-                                </a>
-                                <a href="{{ Route('liste_plat_tableau') }}">
-                                    <button type="button" class="btn btn-addon m-b-10 text-right" style="background-color: #1b5fac"><strong style="color: white"><i><i class="fa fa-list"></i></i>TABLEAU DES PLATS</strong></button>
-                                </a>
-                                <br>
-                                {{-- <div class="row">
-                                    <form method="GET" action="{{ route('liste_plat') }}" class="position-relative col-lg-10">
-                                        <div class="search-type col-lg-8">
-                                            <input class="form-control input-rounded" type="search" name="search" placeholder="Recherche par Nom, Type" aria-label="Search" value="{{ request('search') }}" />
-                                        </div>
-                                        <div class="col-lg-2">
-                                            <button type="submit" class="btn btn-primary">Rechercher</button>
-                                        </div>
-                                    </form>
-                                </div> --}}
-                            </div>
-                            <div >
-                                <div class="main-content">
-                                    <div class="row">
-                                        @foreach ($plats as $plat)
-                                        <div class="col-lg-4" >
-                                            <div class="card alert" style="border-color: #1bac4b; border-style: solid; border-width: 3px">
-                                                <div class="row">
-                                                    <div class="col-lg-4">
-                                                        <div class="product-3-img">
-                                                            @php
-                                                                $images = json_decode($plat->Photos);
-                                                                $firstImage = $images ? asset('storage/' . $images[0]) : asset('assets/images/3.jpg');
-                                                            @endphp
-                                                            <img src="{{ $firstImage }}" class="img-fluid" alt="{{ $plat->Nom }}" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-8">
-                                                        <div class="product_details_3">
-                                                            <div class="product_name">
-                                                                <h4>{{ $plat->Nom }}</h4>
-                                                            </div>
-                                                            <div class="product_des">
-                                                                <p>{{ $plat->Description }}</p>
-                                                            </div>
-                                                            <div class="prdt_add_to_cart">
-                                                                <p class=" m-b-10">{{ $plat->Prix }} FCFA</p>
-                                                                <br>
-                                                            </div>
-                                                            <div class="prdt_add_to_cart">
-                                                                <div class="text-right">
-                                                                    {{-- {{ Route('detail_plat', $plat->Id_Plat) }} --}}
-                                                                    <a href="/update_plat/{{ $plat->Id_Plat }}" class="btn btn-warning btn-addon m-b-10 m-l-1"><i class="ti-pencil"></i>Modifier</a>
-                                                                    <a href="/delete_plat/{{ $plat->Id_Plat }}" class="btn btn-danger btn-addon m-b-10 m-l-1" ><i class="ti-trash"></i>Supprimer</a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /# card -->
-                                        </div>
-                                    @endforeach
-                                    </div>
-                                    <!-- /# row -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!-- Liste des plats de la bd -->
 
 
