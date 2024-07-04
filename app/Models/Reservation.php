@@ -13,7 +13,7 @@ class Reservation extends Model
     use HasFactory;
 
     protected $primaryKey = 'Id_Reservation';
-    protected $fillable = ['Date_heure', 'Mode_paiement', 'Nombre_personnes', 'Statut'];
+    protected $fillable = ['Date_heure', 'Mode_paiement', 'Id_Client', 'Id_Table', 'Id_Horaire', 'Nombre_personnes'];
 
     public function client()
     {

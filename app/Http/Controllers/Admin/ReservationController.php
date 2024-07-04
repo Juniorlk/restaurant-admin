@@ -11,7 +11,7 @@ class ReservationController extends Controller
     public function index(Request $request)
     {
         // Requête de base pour les réservations avec les relations chargées
-        $query = Reservation::with('client');
+        $query = Reservation::query();
 
         // Filtrer par recherche si le paramètre 'search' est présent
         if ($request->has('search')) {
@@ -22,20 +22,22 @@ class ReservationController extends Controller
             });
         }
 
-        // Filtrer par statut si le paramètre 'status' est présent
-        $status = $request->input('status', 'all');
-        if ($status == 'pending') {
-            $query->where('Statut', 'en attente');
-        } elseif ($status == 'validated') {
-            $query->where('Statut', 'validée');
-        } elseif ($status == 'cancelled') {
-            $query->where('Statut', 'annulée');
+        // Filtrer par statut si le paramètre 'type' est présent
+        $type = $request->input('type', 'all');
+        if ($type == 'pending') {
+            $query->where('Statut', 2);
+        } elseif ($type == 'accepted') {
+            $query->where('Statut', 1);
+        } elseif ($type == 'pending') {
+            $query->where('Statut', 0);
         }
 
         // Paginer les réservations
         $reservations = $query->paginate(10);
 
-        return view('admin.reservations.index', compact('reservations', 'status'));
+        return view('admin.reservations.index', compact('reservations', 'type'));
+
+
     }
 
     public function edit($id)
@@ -48,10 +50,10 @@ class ReservationController extends Controller
     {
         $reservation = Reservation::findOrFail($id);
 
-        if ($request->input('action') == 'validate') {
-            $reservation->Statut = 'validée';
-        } elseif ($request->input('action') == 'cancel') {
-            $reservation->Statut = 'annulée';
+        if ($request->input('action') == 'livrer') {
+            $reservation->Statut = 1;
+        } elseif ($request->input('action') == 'rejeter') {
+            $reservation->Statut = 2;
         }
 
         $reservation->save();

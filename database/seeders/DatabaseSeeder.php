@@ -520,7 +520,7 @@ class DatabaseSeeder extends Seeder
                 'Id_Table' => 1,
                 'Id_Horaire' => 1,
                 'Nombre_personnes' => 4,
-                'Statut' => 'Confirmée'
+                'Statut' => 1
             ],
             [
                 'Date_heure' => now(),
@@ -529,7 +529,7 @@ class DatabaseSeeder extends Seeder
                 'Id_Table' => 2,
                 'Id_Horaire' => 2,
                 'Nombre_personnes' => 2,
-                'Statut' => 'Confirmée'
+                'Statut' => 1
             ],
         ]);
 

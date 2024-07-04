@@ -19,12 +19,22 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
+        <link href="{{asset('/assets/css/lib/chartist/chartist.min.css')}} " rel="stylesheet">
+        <link href="{{asset('/assets/css/lib/font-awesome.min.css')}}" rel="stylesheet">
+        <link href="{{asset('/assets/css/lib/themify-icons.css')}}" rel="stylesheet">
+        <link href="{{asset('/assets/css/lib/owl.carousel.min.css')}}" rel="stylesheet" />
+        <link href="{{asset('/assets/css/lib/owl.theme.default.min.css')}}" rel="stylesheet" />
+        <link href="{{asset('/assets/css/lib/weather-icons.css')}}" rel="stylesheet" />
+        <link href="{{asset('/assets/css/lib/menubar/sidebar.css')}}" rel="stylesheet">
+        <link href="{{asset('/assets/css/lib/bootstrap.min.css')}}" rel="stylesheet">
+        <link href="{{asset('/assets/css/lib/unix.css')}}" rel="stylesheet">
+        <link href="{{asset('/assets/css/style.css')}}" rel="stylesheet">
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
         <style>
             .background-image {
                 position: relative;
+                height: 100vh;
             }
 
             .background-image::before {
@@ -46,25 +56,29 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background-color: rgba(0, 128, 0, 0.866); /* Green color with opacity */
+                background-color: #1bac4b73; /* Green color with opacity */
                 z-index: -1;
             }
         </style>
     </head>
-    <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 background-image">
-            <div class="w-full col-4 sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
-            <div class="flex flex-col sm:justify-center items-center mb-6">
-                <a href="/">
-                    <img src="{{asset('/images/logoAF.png')}}" alt="foodapp" class="w-30 h-40 fill-current text-gray-500">
-                </a>
-            </div>
+    <body class="background-image background-overlay">
+        <div class="unix-login">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-lg-offset-3">
+                        <div class="login-content">
 
-
-                {{ $slot }}
-
-
+                            <div class="login-form" style="border-radius: 10px">
+                                <div class="login-logo">
+                                    <a href="{{route('dashboard')}}"><img src="{{asset('/images/logoAF.png')}}" alt="logo"></a>
+                                </div>
+                                {{ $slot }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
     </body>
 </html>
