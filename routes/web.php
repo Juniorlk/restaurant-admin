@@ -16,7 +16,8 @@ use App\Http\Controllers\Admin\ReservationController;
 // });
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
-
+Route::get('/reservations/{id}', [ReservationController::class, 'edit'])->name('reservations.edit');
+Route::get('/commande/{id}', [CommandeController::class, 'edit'])->name('commande.edit');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -65,7 +66,6 @@ Route::middleware('auth')->group(function () {
 
     //réservations
     Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
-    Route::get('/reservations/{id}/edit', [ReservationController::class, 'edit'])->name('reservations.edit');
     Route::put('/reservations/{id}', [ReservationController::class, 'update'])->name('reservations.update');
 
 

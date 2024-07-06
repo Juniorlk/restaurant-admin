@@ -42,8 +42,9 @@ class ReservationController extends Controller
 
     public function edit($id)
     {
-        $reservation = Reservation::with('client')->findOrFail($id);
-        return view('admin.reservations.edit', compact('reservation'));
+        $reservation = Reservation::findOrFail($id);
+        $reservation->paiement = 1;
+        return view('admin.reservations.edit');
     }
 
     public function update(Request $request, $id)
@@ -60,5 +61,6 @@ class ReservationController extends Controller
 
         return redirect()->back()->with('success', 'Réservation mise à jour avec succès.');
     }
+
 }
 

@@ -24,7 +24,7 @@ class PlatController extends Controller
         }
 
         // Paginer les plats
-        $plats = $query->paginate(10);
+        $plats = $query->paginate(12);
 
         return view('admin/plat/liste_plat', compact('plats'));
     }
@@ -42,7 +42,7 @@ class PlatController extends Controller
         }
 
         // Paginer les plats
-        $plats = $query->paginate(10);
+        $plats = $query->paginate(12);
 
         return view('admin/plat/liste_plat_tableau', compact('plats'));
     }
@@ -145,10 +145,8 @@ class PlatController extends Controller
             'id_categorie' => 'required|integer', // Assurez-vous que c'est un entier
         ]);
 
-        // Trouver le plat par ID
         $plat = Plat::findOrFail($id);
 
-        // Mettre à jour les champs
         $imageUrls = [];
         if ($request->hasFile('photos')) {
             foreach ($request->file('photos') as $image) {
@@ -157,7 +155,6 @@ class PlatController extends Controller
             }
         }
 
-
         $plat->nom = $request->nom;
         $plat->description = $request->description;
         $plat->prix = $request->prix;
@@ -165,8 +162,6 @@ class PlatController extends Controller
         $plat->allergenes = $request->allergenes;
         $plat->type_plat = $request->type_plat;
         $plat->id_categorie = $request->id_categorie; // Assurez-vous d'assigner correctement id_categorie
-
-        // Enregistrer les modifications
         $plat->save();
 
         return redirect('/plat')->with("status", "Le plat a été modifié");

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreign('Id_Horaire')->references('Id_Horaire')->on('horaires')->onDelete('cascade');
             $table->integer('Nombre_personnes');
             $table->integer('Statut')->default(0);
+            $table->bool('paiement')->default(0);
             $table->timestamps();
             // $table->primary(['Id_Client', 'Id_Table', 'Id_Horaire']);
         });

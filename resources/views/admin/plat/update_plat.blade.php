@@ -34,22 +34,22 @@
                     <div class="col-lg-4 p-l-0 title-margin-left">
                         <div class="page-header">
                             <a class="btn btn-warning btn-rounded m-t-7 m-b-10 m-l-5" href="{{ route('liste_plat') }}">Liste des Plats</a>
-                            
+
                         </div>
                     </div>
-                    
+
                 </div>
                 @if (session('status'))
-                    <div class="alert alert-success">
+                    <div class="alert alert-success " style="color: white">
                         {{ session('status') }}
                     </div>
                 @endif
-               
+
                  <!-- Formulaire d'ajout des plats de la bd -->
-                 
+
                  <div class="container">
                     <div class="card custom-card">
-                  
+
                         <div class="card-body">
                             <form id="commandeForm{{ $plats->Id_Plat }}" action="{{ route('plat.update', $plats->Id_Plat) }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                                 @csrf
@@ -104,8 +104,8 @@
                                                 @foreach($categories as $categorie)
                                                     <option value="{{$categorie->Id_Categorie}}">{{$categorie->Nom}}</option>
                                                 @endforeach
-                                               
-                                                
+
+
                                             </select>
                                         </div>
                                     </div>
@@ -120,11 +120,11 @@
                         </div>
                     </div>
                 </div>
-                 
+
 
             </div>
         </div>
     </div>
 
-   
+
 @endsection

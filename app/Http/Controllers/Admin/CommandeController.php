@@ -42,7 +42,7 @@ class CommandeController extends Controller
             $query->where('Statut', 0);
         }
         $query->orderBy('Date_heure', 'desc');
-        
+
         // Paginer les commandes
         $commandes = $query->paginate(10);
 
@@ -81,7 +81,9 @@ class CommandeController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $commande = Commande::findOrFail($id);
+        $commande->paiement = 1;
+        return view('admin.commandes.edit');
     }
 
     /**
