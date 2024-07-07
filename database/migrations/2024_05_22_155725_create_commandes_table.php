@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('Mode_paiement');
             $table->integer('Prix');
             $table->integer('Statut')->default(0);
-            $table->bool('paiement')->default(0);
+            $table->boolean('paiement')->default(0);
             $table->foreign('Id_Client')->references('Id_Client')->on('clients')->onDelete('cascade');
             $table->timestamps();
         });
