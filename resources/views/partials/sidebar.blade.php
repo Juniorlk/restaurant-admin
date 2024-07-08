@@ -34,7 +34,7 @@
                     </a>
                     <ul>
                         <li><a href="{{ route('reservations.index')}}">Liste des Réservations</a></li>
-                        <li><a href="reservations-details.html">Détails des Réservations</a></li>
+                        <li><a href="{{ route('reservations.calendar') }}">Tableau des Réservations</a></li>
                     </ul>
                 </li>
 

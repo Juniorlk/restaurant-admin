@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 @if (session('status'))
-                    <div class="alert alert-success">
+                    <div class="alert alert-success " style="color: white">
                         {{ session('status') }}
                     </div>
                 @endif
@@ -160,6 +160,13 @@
                                     @endforeach
                                     </div>
                                     <!-- /# row -->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="page-nation text-center">
+                                                {{ $plats->appends(request()->query())->links('vendor.pagination.default') }}
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

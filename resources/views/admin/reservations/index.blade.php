@@ -26,6 +26,14 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card alert">
+                                <div class="card-header text-center">
+                                    <a href="{{ Route('reservations.create') }}">
+                                        <button type="button" class="btn btn-addon m-b-10" style="background-color: #1bac4b"><strong style="color: white"><i><i class="fa fa-plus"></i></i>AJOUTER UN RESERVATION</strong></button>
+                                    </a>
+                                    <br>
+                                    <br>
+                                    <hr>
+                                </div>
                                 <div class="card-header">
                                     <div class="row">
                                         <div class="col-lg-2">
@@ -90,12 +98,13 @@
                                                             @if ($reservation->Statut == 0)
                                                                 <span class="label label-warning">En cours</span>
                                                             @elseif ($reservation->Statut == 1)
-                                                                <span class="label label-success">Livré</span>
+                                                                <span class="label label-success">Confirmé</span>
                                                             @else
                                                                 <span class="label label-danger">Rejeté</span>
                                                             @endif
                                                         </td>
                                                         <td>
+                                                            <a href="{{ route('reservations.edit', $reservation->Id_Reservation) }}" class="btn btn-primary btn-outline">Modifier</a>
                                                             <button class="btn btn-success btn-outline" data-toggle="modal" data-target="#modalReservation{{ $reservation->Id_Reservation }}">Consulter la Reservation</button>
                                                         </td>
                                                     </tr>
@@ -143,7 +152,7 @@
                                                                         @if ($reservation->Statut == 0)
                                                                             <span class="label label-warning">En cours</span>
                                                                         @elseif ($reservation->Statut == 1)
-                                                                            <span class="label label-success">Livré</span>
+                                                                            <span class="label label-success">Confirmé</span>
                                                                         @else
                                                                             <span class="label label-danger">Rejeté</span>
                                                                         @endif
@@ -153,7 +162,7 @@
                                                                     <form id="reservationForm{{ $reservation->Id_Reservation }}" action="{{ route('reservations.update', $reservation->Id_Reservation) }}" method="POST">
                                                                         @csrf
                                                                         @method('PUT')
-                                                                        <button type="button" class="btn btn-success" onclick="submitForm('{{ $reservation->Id_Reservation }}', 'livrer', '{{ $reservation->client->Nom }}')">Confirmer la Reservation</button>
+                                                                        <button type="button" class="btn btn-success" onclick="submitForm('{{ $reservation->Id_Reservation }}', 'confirmer', '{{ $reservation->client->Nom }}')">Confirmer la Reservation</button>
                                                                         <button type="button" class="btn btn-danger" onclick="submitForm('{{ $reservation->Id_Reservation }}', 'rejeter', '{{ $reservation->client->Nom }}')">Rejeter la Reservation</button>
                                                                     </form>
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
