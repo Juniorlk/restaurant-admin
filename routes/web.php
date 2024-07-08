@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\CommandeController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategorieController;
 use App\Http\Controllers\Admin\ReservationController;
+use App\Http\Controllers\Admin\RapportController;
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -84,6 +86,10 @@ Route::middleware('auth')->group(function () {
 
     //horaires
     Route::resource('horaires', HoraireController::class);
+
+    //Rapport
+    Route::get('/rapport', [RapportController::class, 'index'])->name('rapports.index');
+    
 
 });
 

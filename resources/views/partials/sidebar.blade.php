@@ -90,7 +90,7 @@
                         <span class="sidebar-collapse-icon ti-angle-down"></span>
                     </a>
                     <ul>
-                        <li><a href="reports-orders.html">Rapports des Commandes</a></li>
+                        <li><a href="{{ route('rapports.index')}}">Rapports des Commandes</a></li>
                         <li><a href="reports-reservations.html">Rapports des Réservations</a></li>
                         <li><a href="reports-clients.html">Rapports des Clients</a></li>
                     </ul>

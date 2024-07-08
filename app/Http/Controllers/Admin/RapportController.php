@@ -4,22 +4,27 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Client;
-use App\Models\Commande;
-use App\Models\Reservation;
 use Illuminate\Support\Facades\DB;
 
-
-
-
-class DashboardController extends Controller
+class RapportController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $rapport = DB::table('commandes')
+        ->select(
+            DB::raw('DATE(Date_heure) as date'),
+            DB::raw('count(*) as nombre_commandes'),
+            DB::raw('sum(Prix) as somme_montant')
+        )
+        ->whereNotNull('Date_heure')
+        ->groupBy(DB::raw('DATE(Date_heure)'))
+        ->orderBy('date', 'desc')
+        ->get();
+         // dd($rapport);
+        return view('admin/rapports/rapport_commande', compact('rapport'));
     }
 
     /**
@@ -69,21 +74,4 @@ class DashboardController extends Controller
     {
         //
     }
-
-    public function dashboard()
-        {
-            $numberOfClients = Client::count();
-            $sommePrix = Commande::sum('Prix');
-            $numberOfCommande = Commande::where('statut', 1)->count();
-            $numberOfReservation = Reservation::count();
-
-            $client = DB::table('commandes')
-            ->select('clients.nom', DB::raw('count(commandes.Id_Client) as nombre_commandes'))
-            ->join('clients', 'commandes.Id_Client', '=', 'clients.Id_Client')
-            ->groupBy('clients.Nom')
-            ->orderByDesc('nombre_commandes')
-            ->first();
-            return view('dashboard', compact('client','numberOfClients','sommePrix','numberOfCommande','numberOfReservation'));
-        }
-
 }
