@@ -67,7 +67,15 @@ Route::middleware('auth')->group(function () {
     //réservations
     Route::get('/reservations', [ReservationController::class, 'index'])->name('reservations.index');
     Route::put('/reservations/{id}', [ReservationController::class, 'update'])->name('reservations.update');
+    Route::get('/reservation/create', [ReservationController::class, 'create'])->name('reservations.create');
+    Route::post('/reservations', [ReservationController::class, 'store'])->name('reservations.store');
+    Route::get('/reservations/horaires/{day}', [ReservationController::class, 'getHorairesByDay'])->name('reservations.horaires');
+    Route::get('/reservations/tables/{horaireId}/{persons}', [ReservationController::class, 'getAvailableTables'])->name('reservations.tables');
+    Route::get('/reservation/details/{id}', [ReservationController::class, 'getReservationDetails'])->name('reservations.details');
 
+
+    Route::get('/calendar', [ReservationController::class, 'calendar'])->name('reservations.calendar');
+    Route::get('/reservations/getReservations', [ReservationController::class, 'getReservations'])->name('reservations.getReservations');
 
 
 

@@ -77,16 +77,16 @@ class ReservationController extends Controller
         $validator = Validator::make($request->all(), [
             'Id_Client' => 'required|exists:clients,Id_Client',
             'Mode_paiement' => 'required|string',
-            'Date_heure' => 'required|date',
+            // 'Date_heure' => 'required|date',
             'Id_Table' => 'required|exists:tables,Id_Table',
             'Id_Horaire' => 'required|exists:horaires,Id_Horaire',
             'Nombre_personnes' => 'required|integer|min:1',
         ]);
-        // dd($request->Id_Client);
+        dd($request->all());
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
-
+        dd($request->all());
         $reservation = Reservation::create([
             'Date_heure' => $request->Date_heure,
             'Mode_paiement' => $request->Mode_paiement,
