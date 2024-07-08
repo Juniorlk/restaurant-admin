@@ -28,154 +28,114 @@
                 <!-- /# row -->
                 <div id="main-content">
                     <div class="row">
-                        <div class="col-lg-3">
-                            <div class="card">
-                                <div class="stat-widget-eight">
-                                    <div class="stat-header">
-                                        <div class="header-title pull-left">Nombre d'utilisateur</div>
-                                        <div class="card-option drop-menu pull-right"><i class="ti-more-alt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
-                                            <ul class="card-option-dropdown dropdown-menu">
-                                                <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
-                                                <li><a href="#"><i class="ti-menu-alt"></i> Detail log</a></li>
-                                                <li><a href="#"><i class="ti-pulse"></i> Statistics</a></li>
-                                                <li><a href="#"><i class="ti-power-off"></i> Clear ist</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="stat-content">
-                                        <div class="pull-left">
-                                            <i class="ti-arrow-up color-success"></i>
-                                            <span class="stat-digit">{{$numberOfClients}}</span>
-                                        </div>
-                                        <div class="pull-right">
-                                            <span class="progress-stats"></span>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-lg-3">
-                            <div class="card">
-                                <div class="stat-widget-eight">
-                                    <div class="stat-header">
-                                        <div class="header-title pull-left">Chiffre d'affaire</div>
-                                        <div class="card-option drop-menu pull-right"><i class="ti-more-alt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
-                                            <ul class="card-option-dropdown dropdown-menu">
-                                                <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
-                                                <li><a href="#"><i class="ti-menu-alt"></i> Detail log</a></li>
-                                                <li><a href="#"><i class="ti-pulse"></i> Statistics</a></li>
-                                                <li><a href="#"><i class="ti-power-off"></i> Clear list</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="stat-content">
-                                        <div class="pull-left">
-                                            <i class="ti-arrow-up color-success"></i>
-                                            <span class="stat-digit" id="sommePrix">{{$sommePrix}}</span>
-                                        </div>
-                                        <div class="pull-right">
-                                            <span class="progress-stats"></span>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <script>
-                            $(document).ready(function() {
-                                function fetchPrixSomme() {
-                                    $.ajax({
-                                        url: '/prix-somme',
-                                        method: 'GET',
-                                        success: function(response) {
-                                            $('#sommePrix').text(response.somme);
-                                        },
-                                        error: function(xhr, status, error) {
-                                            console.error('Error fetching prix somme:', error);
-                                        }
-                                    });
-                                }
-                        
-                                // Actualiser toutes les secondes
-                                setInterval(fetchPrixSomme, 1000);
-                        
-                                // Fetch initial sum
-                                fetchPrixSomme();
-                            });
-                        </script>
-                        
-                        <div class="col-lg-3">
-                            <div class="card">
-                                <div class="stat-widget-eight">
-                                    <div class="stat-header">
-                                        <div class="header-title pull-left">Nombres de Reservation</div>
-                                        <div class="card-option drop-menu pull-right"><i class="ti-more-alt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
-                                            <ul class="card-option-dropdown dropdown-menu">
-                                                <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
-                                                <li><a href="#"><i class="ti-menu-alt"></i> Detail log</a></li>
-                                                <li><a href="#"><i class="ti-pulse"></i> Statistics</a></li>
-                                                <li><a href="#"><i class="ti-power-off"></i> Clear ist</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="stat-content">
-                                        <div class="pull-left">
-                                            <i class="ti-arrow-up color-success"></i>
-                                            <span class="stat-digit">{{$numberOfReservation}}</span>
-                                        </div>
-                                        <div class="pull-right">
-                                            <span class="progress-stats"></span>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="card">
-                                <div class="stat-widget-eight">
-                                    <div class="stat-header">
-                                        <div class="header-title pull-left">Nombre de Commande</div>
-                                        <div class="card-option drop-menu pull-right"><i class="ti-more-alt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" role="link"></i>
-                                            <ul class="card-option-dropdown dropdown-menu">
-                                                <li><a href="#"><i class="ti-loop"></i> Update data</a></li>
-                                                <li><a href="#"><i class="ti-menu-alt"></i> Detail log</a></li>
-                                                <li><a href="#"><i class="ti-pulse"></i> Statistics</a></li>
-                                                <li><a href="#"><i class="ti-power-off"></i> Clear ist</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    <div class="stat-content">
-                                        <div class="pull-left">
-                                            <i class="ti-arrow-up color-success"></i>
-                                            <span class="stat-digit">{{$numberOfCommande}}</span>
-                                        </div>
-                                        <div class="pull-right">
-                                            <span class="progress-stats"></span>
-                                        </div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                    
-                                </div>
-                            </div>
-                        </div>
                        
-                       
+                        
+                        <div class="col-lg-6">
+                            <div class="card p-0">
+                                <div class="stat-widget-three">
+                                    <div class="stat-icon bg-primary">
+                                        <i class="ti-user"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="stat-digit">Nombre d'utilisateur</div>
+                                        <div class="text-warning"><span class="stat-digit" id="sommePrix">{{$numberOfClients}}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card p-0">
+                                <div class="stat-widget-three">
+                                    <div class="stat-icon bg-success">
+                                        <i class="ti-money"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="stat-digit">Chiffre d'affaire</div>
+                                        <div class="text-warning"><span class="stat-digit" id="sommePrix">{{$sommePrix}}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card p-0">
+                                <div class="stat-widget-three">
+                                    <div class="stat-icon bg-warning">
+                                        <i class="ti-money"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="stat-digit">Nombres de Reservation</div>
+                                        <div class="text-warning"><span class="stat-digit" id="sommePrix">{{$numberOfReservation}}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card p-0">
+                                <div class="stat-widget-three">
+                                    <div class="stat-icon bg-danger">
+                                        <i class="ti-money"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="stat-digit">Nombre de Commande</div>
+                                        <div class="text-warning"><span class="stat-digit" id="sommePrix">{{$numberOfCommande}}</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="stat-widget-one">
+                                    <div class="stat-icon dib"><i class="ti-cup color-pink border-pink"></i></div>
+                                    <div class="stat-content dib">
+                                        <div class="stat-text">Client régulier :</div>
+                                        <div class="stat-digit">{{$client->nom}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="stat-widget-one">
+                                    <div class="stat-icon dib"><i class="ti-cup color-pink border-pink"></i></div>
+                                    <div class="stat-content dib">
+                                        <div class="stat-text"></div>
+                                        <div class="stat-digit"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="stat-widget-one">
+                                    <div class="stat-icon dib"><i class="ti-cup color-pink border-pink"></i></div>
+                                    <div class="stat-content dib">
+                                        <div class="stat-text"></div>
+                                        <div class="stat-digit"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="card">
+                                <div class="stat-widget-one">
+                                    <div class="stat-icon dib"><i class="ti-wallet color-danger border-danger"></i></div>
+                                    <div class="stat-content dib">
+                                        <div class="stat-text">Meilleur client :</div>
+                                        <div class="stat-digit">{{$client->nom}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
                        
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="row">
-                                <div class="col-lg-6">
+                                <div class="col-lg-3">
                                     <div class="card alert">
                                         <div class="card-body">
                                             <div class="ct-chart"></div>
