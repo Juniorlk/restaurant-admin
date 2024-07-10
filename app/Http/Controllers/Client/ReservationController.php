@@ -82,19 +82,19 @@ class ReservationController extends Controller
             'Id_Horaire' => 'required|exists:horaires,Id_Horaire',
             'Nombre_personnes' => 'required|integer|min:1',
         ]);
-        dd($request->all());
+        // dd($request->all());
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
-        dd($request->all());
+        // dd($request->all());
         $reservation = Reservation::create([
             'Date_heure' => $request->Date_heure,
             'Mode_paiement' => $request->Mode_paiement,
-            'Id_Client' => 1,
+            'Id_Client' => $request->Id_Client,
             'Id_Table' => $request->Id_Table,
             'Id_Horaire' => $request->Id_Horaire,
             'Nombre_personnes' => $request->Nombre_personnes,
-            'Statut' => $request->Statut,
+            // 'Statut' => $request->Statut,
         ]);
 
         return response()->json($reservation, 201);
