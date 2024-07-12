@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Client;
+use App\Models\Client;
 use App\Http\Controllers\Controller;
 
 
@@ -97,7 +98,9 @@ class ReservationController extends Controller
             // 'Statut' => $request->Statut,
         ]);
 
-        return response()->json($reservation, 201);
+        $client = Client::find($request->Id_Client);
+
+        return response()->json(['reservation' => $reservation, 'client' => $client], 201, );
     }
     public function getReservationsByClient($clientId)
     {

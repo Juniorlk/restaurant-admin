@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\RapportController;
 // });
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
-Route::get('/reservations/{id}', [ReservationController::class, 'edit'])->name('reservations.edit');
+Route::post('/reservations-edit', [ReservationController::class, 'edit'])->name('reservations.edit');
 Route::get('/commande/{id}', [CommandeController::class, 'edit'])->name('commande.edit');
 
 Route::middleware('auth')->group(function () {
@@ -89,7 +89,7 @@ Route::middleware('auth')->group(function () {
 
     //Rapport
     Route::get('/rapport', [RapportController::class, 'index'])->name('rapports.index');
-    
+
 
 });
 

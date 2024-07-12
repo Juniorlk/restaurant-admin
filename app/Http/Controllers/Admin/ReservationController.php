@@ -42,12 +42,13 @@ class ReservationController extends Controller
 
     }
 
-    public function edit($id)
+    public function edit( Request $request)
     {
-        $reservation = Reservation::findOrFail($id);
+        $reservation = Reservation::findOrFail($request->user);
         $reservation->paiement = 1;
         $reservation->save();
-        return view('admin.reservations.edit');
+        // return response()->json($reservation, 200);
+        // return view('admin.reservations.edit');
     }
 
     public function update(Request $request, $id)
